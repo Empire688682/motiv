@@ -26,35 +26,12 @@ const nextConfig = {
       ...(config.resolve.alias || {}),
       '@': path.resolve(process.cwd()),
     };
-
-    // Fix for undici private field syntax - more targeted approach
-    config.module.rules.push({
-      test: /\.js$/,
-      include: /node_modules\/undici/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: [
-            ['@babel/preset-env', {
-              targets: {
-                node: '18'
-              }
-            }]
-          ],
-          plugins: [
-            '@babel/plugin-proposal-private-methods',
-            '@babel/plugin-proposal-class-properties'
-          ]
-        }
-      }
-    });
-
-    // Mark undici as external for server-side builds to avoid parsing issues
-    if (isServer) {
-      config.externals = [...(config.externals || []), 'undici'];
-    }
     
     return config;
+  },
+  experimental: {
+    // Enable React 19 features
+    reactCompiler: false,
   },
 }
 
