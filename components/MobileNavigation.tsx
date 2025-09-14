@@ -79,10 +79,10 @@ export function MobileNavigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={cn(
-                  "flex flex-col items-center justify-center space-y-1 transition-colors touch-manipulation",
-                  isActive ? "text-white" : "text-gray-400 hover:text-gray-300"
-                )}
+                className={
+                  `flex flex-col items-center justify-center space-y-1 transition-colors touch-manipulation",
+                  ${isActive ? "text-white" : "text-gray-400 hover:text-gray-300"}`
+                }
               >
                 <Icon className="w-5 h-5" />
                 <span className="text-xs font-medium">{item.name}</span>

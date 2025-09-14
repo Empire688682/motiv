@@ -330,12 +330,12 @@ export function Header() {
       {/* Mobile Sidebar */}
       <div
         className={`fixed top-0 right-0 h-screen w-72 sm:w-80 border-l border-gray-800/50 z-50 md:hidden transform transition-transform duration-300 ease-in-out ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
+          isMenuOpen ? "translate-x-0 block" : "translate-x-full hidden"
         } bg-[#0D0D0D]/98 backdrop-blur-md`}
       >
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full bg-black/90">
           {/* Sidebar Header */}
-          <div className="flex items-center justify-between p-4 border-b border-gray-800/50">
+          <div className="flex items-center justify-between p-4">
             <div className="text-lg font-bold text-[#D72638] font-anton">
               MOTIV
             </div>
