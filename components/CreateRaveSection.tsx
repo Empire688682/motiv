@@ -21,7 +21,7 @@ export function CreateRaveSection() {
           Got a rave with a great experience? Partner with us & get listed on Motiv
         </p>
         <Button className="bg-gradient-to-r from-white to-gray-100 text-black hover:from-gray-100 hover:to-white px-8 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
-          <Calendar className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
+          <Calendar className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300 text-black" />
           <span className="group-hover:translate-x-1 transition-transform text-black duration-300">Create Rave</span>
         </Button>
       </div>
