@@ -223,7 +223,7 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
         }
       }}
     >
-      <DialogContent className="sm:max-w-[400px] bg-[#1a1a1a] border-gray-700 [&>button]:text-white [&>button]:hover:text-gray-300">
+      <DialogContent className="sm:max-w-[400px] bg-[#1a1a1a] border-gray-700 [&>button]:text-white [&>button]:hover:text-gray-300 overflow-scroll h-full">
         <DialogHeader>
           <DialogTitle className="text-xl font-bold text-white flex items-center gap-2">
             {isForgotPassword && (
@@ -291,7 +291,7 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
               <Button
                 type="submit"
                 disabled={forgotPasswordLoading}
-                className="w-full bg-[#D72638] hover:bg-[#B91E2F] text-white py-3"
+                className="w-full bg-[#B91E2F] text-white py-3"
               >
                 {forgotPasswordLoading ? (
                   <>
@@ -320,7 +320,7 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
                 onClick={handleGoogleAuth}
                 disabled={isLoading}
                 variant="outline"
-                className="w-full py-3 border-gray-600 text-black hover:bg-gray-800 hover:text-white"
+                className="w-full py-3 border-gray-600 text-black hover:bg-gray-800 text-white"
               >
                 <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
                   <path
@@ -573,7 +573,7 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-[#D72638] hover:bg-[#B91E2F] text-white py-3"
+                  className="w-full hover:bg-[#D72638] bg-[#B91E2F] text-white py-3"
                 >
                   {isLoading ? (
                     <>

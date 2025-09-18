@@ -248,7 +248,7 @@ export default function TicketPage() {
           <Button
             onClick={() => router.push("/my-raves")}
             variant="ghost"
-            className="mb-6 text-gray-400 hover:text-white"
+            className="mb-6 text-gray-400 hover:text-black"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to My Raves
@@ -362,7 +362,7 @@ export default function TicketPage() {
                     <Button
                       onClick={downloadTicket}
                       disabled={isDownloading || !qrCodeUrl}
-                      className="w-full bg-[#D72638] hover:bg-[#B91E2F] text-white"
+                      className="w-full bg-[#B91E2F] text-white"
                       size="lg"
                     >
                       {isDownloading ? (

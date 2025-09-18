@@ -300,7 +300,7 @@ export default function WishlistPage() {
                       <Link href={`/event/${event.id}`}>
                         <Button
                           size="sm"
-                          className="bg-[#D72638] hover:bg-[#B91E2F] text-white touch-manipulation"
+                          className="bg-[#B91E2F] text-white touch-manipulation"
                         >
                           View Event
                         </Button>

@@ -538,10 +538,12 @@ export function Header() {
         isOpen={isShareModalOpen}
         onClose={() => setIsShareModalOpen(false)}
       />
-      <AuthModal
+      <div className="z-50">
+        <AuthModal
         isOpen={isAuthModalOpen}
         onClose={() => setIsAuthModalOpen(false)}
       />
+      </div>
       {user && (
         <UserProfileModal
           isOpen={isProfileModalOpen}

@@ -9,11 +9,16 @@ export function HeroSection() {
       
       <div className="grid lg:grid-cols-2 gap-8 items-center max-w-7xl mx-auto relative">
         <div className="space-y-6">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight font-geist bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent animate-pulse-subtle">
+          <h1 className="text-4xl hidden md:block md:text-6xl lg:text-7xl font-bold leading-tight font-geist bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent animate-pulse-subtle">
             TONIGHT IS
             <br />
             FOR THE
             <br />
+            RAVERS
+          </h1>
+          <h1 className="text-4xl md:text-6xl md:hidden lg:text-7xl font-bold leading-tight font-geist bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent animate-pulse-subtle">
+            TONIGHT IS
+            FOR THE
             RAVERS
           </h1>
           <p className="text-gray-300 text-lg md:text-xl max-w-md leading-relaxed">

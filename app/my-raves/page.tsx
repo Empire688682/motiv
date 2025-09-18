@@ -368,7 +368,7 @@ export default function MyRavesPage() {
             <TabsList className="grid w-full grid-cols-2 mb-4 sm:mb-6 bg-[#1a1a1a] border-gray-800 h-auto p-1">
               <TabsTrigger
                 value="upcoming"
-                className="flex items-center gap-1 sm:gap-2 data-[state=active]:bg-[#D72638] data-[state=active]:text-white text-xs sm:text-sm py-2 sm:py-3 px-2 sm:px-4"
+                className="flex items-center gap-1 sm:gap-2 data-[state=active]:bg-black p-1 data-[state=active]:text-white text-xs sm:text-sm py-2 sm:py-3 px-2 sm:px-4"
               >
                 <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span className="hidden sm:inline">Upcoming</span>
@@ -377,7 +377,7 @@ export default function MyRavesPage() {
               </TabsTrigger>
               <TabsTrigger
                 value="past"
-                className="flex items-center gap-1 sm:gap-2 data-[state=active]:bg-[#D72638] data-[state=active]:text-white text-xs sm:text-sm py-2 sm:py-3 px-2 sm:px-4"
+                className="flex items-center gap-1 sm:gap-2 data-[state=active]:bg-black p-1 data-[state=active]:text-white text-xs sm:text-sm py-2 sm:py-3 px-2 sm:px-4"
               >
                 <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span className="hidden sm:inline">Past Events</span>
