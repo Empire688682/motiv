@@ -5,6 +5,17 @@ import { Button } from "@/components/ui/button";
 import { Camera, CameraOff, Loader2 } from "lucide-react";
 import QrScanner from "qr-scanner";
 
+// Ensure the worker path is set so the library can load its WebWorker in the browser.
+// Using the unpkg CDN for the exact package version installed in package.json (qr-scanner@1.4.2).
+// This avoids needing to copy the worker file into `public/`.
+try {
+  // @ts-ignore - the library exposes a static WORKER_PATH property
+  QrScanner.WORKER_PATH = "https://unpkg.com/qr-scanner@1.4.2/qr-scanner-worker.min.js";
+} catch (e) {
+  // swallow; the library will error later if worker can't be loaded
+  // console.warn('Failed to set QrScanner.WORKER_PATH', e);
+}
+
 interface QRScannerProps {
   onScan: (result: string) => void;
   onError?: (error: string) => void;

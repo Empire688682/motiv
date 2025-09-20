@@ -12,7 +12,7 @@ export function AboutSection() {
         <div className="grid lg:grid-cols-[400px_1fr] gap-16 items-center">
           <div className="relative group">
             <Image
-              src="https://res.cloudinary.com/dkuphcizs/image/upload/v1753716187/kyle-kioko-lFlkYTrTriM-unsplash_j0ejvh.png"
+              src="https://res.cloudinary.com/dicg57iox/image/upload/v1758363125/mad-knoxx-deluxe-jD5aj2a1dL0-unsplash_wrelqz.png"
               alt="Atmospheric nightlife scene"
               width={400}
               height={400}

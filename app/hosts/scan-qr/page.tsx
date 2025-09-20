@@ -285,31 +285,14 @@ export default function ScanQRPage() {
                   </div>
                   <Button 
                     onClick={handleManualScan}
-                    className="w-full bg-gray-800 hover:bg-gray-700 touch-manipulation"
+                    className="w-full bg-gray-800 text-white hover:bg-gray-700 touch-manipulation"
                     disabled={!manualQRInput.trim() || !selectedEvent}
                   >
                     Scan Code
                   </Button>
                 </div>
 
-                {/* Quick Test Codes */}
-                <div className="pt-3 sm:pt-4 border-t">
-                  <p className="text-sm font-medium text-gray-700 mb-2">Quick Test:</p>
-                  <div className="grid grid-cols-2 gap-2">
-                    {["TEST-001", "TEST-002", "TEST-003", "TEST-004"].map(code => (
-                      <Button
-                        key={code}
-                        variant="outline"
-                        size="sm"
-                        onClick={() => handleQRScan(code)}
-                        className="text-xs touch-manipulation h-9 sm:h-10"
-                        disabled={!selectedEvent}
-                      >
-                        {code}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
+                {/* Quick Test section removed in production build - tests are not needed here */}
               </CardContent>
             </Card>
           </div>

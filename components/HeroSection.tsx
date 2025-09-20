@@ -31,7 +31,7 @@ export function HeroSection() {
 
         <div className="relative group">
           <Image
-            src="https://res.cloudinary.com/dkuphcizs/image/upload/v1753716187/frankie-cordoba-Mhjk0TZ6tnw-unsplash_yi1j3i.png"
+            src="https://res.cloudinary.com/dicg57iox/image/upload/v1758363125/ato-aikins-a6CrotZc7R4-unsplash_t6b7b7.png"
             alt="Event party with vibrant lighting and crowd"
             width={600}
             height={400}

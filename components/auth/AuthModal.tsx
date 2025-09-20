@@ -223,7 +223,7 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
         }
       }}
     >
-      <DialogContent className="sm:max-w-[400px] bg-[#1a1a1a] border-gray-700 [&>button]:text-white [&>button]:hover:text-gray-300 overflow-scroll h-full">
+  <DialogContent className="sm:max-w-[400px] bg-[#1a1a1a] border-gray-700 [&>button]:text-white [&>button]:hover:text-gray-300 max-h-[80vh] overflow-auto">
         <DialogHeader>
           <DialogTitle className="text-xl font-bold text-white flex items-center gap-2">
             {isForgotPassword && (
@@ -249,7 +249,7 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
           </DialogDescription>
         </DialogHeader>
 
-        <div className="space-y-4">
+        <div className="space-y-2">
           {/* Forgot Password Form */}
           {isForgotPassword ? (
             <form onSubmit={handleForgotPassword} className="space-y-4">
