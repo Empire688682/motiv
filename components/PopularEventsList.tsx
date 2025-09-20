@@ -132,7 +132,7 @@ export function PopularEventsList() {
           size="lg"
           className="border-[#D72638] text-[#D72638] hover:bg-[#D72638] hover:text-white"
         >
-          Show More Raves
+          Show More Events
         </Button>
       </div>
     </div>

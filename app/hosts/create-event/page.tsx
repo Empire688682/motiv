@@ -182,7 +182,7 @@ export default function CreateEventPage() {
       if (isEdit) {
         console.log("Updating event with ID:", eventId);
         await updateEvent(formData);
-        router.push("/hosts/raves");
+        router.push("/hosts/events");
       } else {
         console.log("Publishing new event");
         await publishEvent(formData);

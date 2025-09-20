@@ -176,9 +176,9 @@ export function PaymentModal({
     setAttendees([]);
     setCurrentAttendeeIndex(0);
 
-    // Redirect to My Raves page after a short delay
+    // Redirect to My Events page after a short delay
     setTimeout(() => {
-      window.location.href = "/my-raves";
+      window.location.href = "/my-events";
     }, 2000);
   };
 

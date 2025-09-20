@@ -48,7 +48,7 @@ export default function HostDashboard() {
       trendUp: true,
     },
     {
-      title: "Total Raves",
+      title: "Total Events",
       value: dashboardStats ? dashboardStats.total_events.toString() : "0",
       subtitle: "Events created",
       icon: Calendar,
@@ -66,7 +66,7 @@ export default function HostDashboard() {
   ];
 
   const handleEdit = (eventId: string) => {
-    router.push(`/hosts/raves/edit/${eventId}`);
+    router.push(`/hosts/events/edit/${eventId}`);
   };
 
   const handleDeleteClick = (eventId: string) => {
@@ -104,7 +104,7 @@ export default function HostDashboard() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Welcome Back, Rave host</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Welcome Back, Event host</h1>
           <p className="text-gray-600 mt-1 text-sm sm:text-base">Here's what's happening with your events today.</p>
         </div>
         <div className="flex flex-col sm:flex-row gap-2">
@@ -130,7 +130,7 @@ export default function HostDashboard() {
             onClick={() => router.push('/hosts/create-event')}
           >
             <Plus className="w-4 h-4 mr-2" />
-            Create Rave
+            Create Event
           </Button>
         </div>
       </div>

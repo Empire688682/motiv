@@ -16,8 +16,8 @@ export function PublishSuccessModal({ isOpen, onClose, eventTitle, eventId }: Pu
 
   if (!isOpen) return null;
 
-  const handleViewMyRaves = () => {
-    router.push("/hosts/raves");
+  const handleViewMyEvents = () => {
+    router.push("/hosts/events");
   };
 
   const handleViewEvent = () => {
@@ -44,11 +44,11 @@ export function PublishSuccessModal({ isOpen, onClose, eventTitle, eventId }: Pu
 
         {/* Success Message */}
         <h2 className="text-2xl font-bold text-gray-900 mb-2">
-          Rave Published Successfully! 🎉
+          Event Published Successfully! 🎉
         </h2>
         
         <p className="text-gray-600 mb-2">
-          <span className="font-semibold">"{eventTitle || "Your Rave"}"</span> is now live and ready for ravers!
+          <span className="font-semibold">"{eventTitle || "Your Event"}"</span> is now live and ready for attendees!
         </p>
         
         <p className="text-sm text-gray-500 mb-8">
@@ -58,11 +58,11 @@ export function PublishSuccessModal({ isOpen, onClose, eventTitle, eventId }: Pu
         {/* Action Buttons */}
         <div className="space-y-3">
           <Button
-            onClick={handleViewMyRaves}
+            onClick={handleViewMyEvents}
             className="w-full bg-[#D72638] hover:bg-[#B91E2F] text-white py-3 text-base font-semibold"
           >
             <Calendar className="w-4 h-4 mr-2" />
-            View My Raves
+            View My Events
           </Button>
           
           <div className="grid grid-cols-2 gap-3">

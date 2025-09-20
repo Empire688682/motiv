@@ -29,7 +29,7 @@ export function HostHeader({ onMenuClick, isSidebarOpen }: HostHeaderProps) {
     router.push("/hosts/dashboard");
   };
 
-  const handleFindRaves = () => {
+  const handleFindEvents = () => {
     router.push("/");
   };
 
@@ -84,10 +84,10 @@ export function HostHeader({ onMenuClick, isSidebarOpen }: HostHeaderProps) {
             Share
           </button>
           <button
-            onClick={handleFindRaves}
+            onClick={handleFindEvents}
             className="text-gray-600 hover:text-[#D72638] font-medium transition-colors duration-200"
           >
-            Find Raves
+            Find Events
           </button>
           <button
             onClick={() => setContactModalOpen(true)}

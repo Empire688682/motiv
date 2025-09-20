@@ -137,7 +137,7 @@ export default function HostSettingsPage() {
           <div className="bg-gradient-to-r from-[#D72638] to-[#B91E2F] text-white rounded-lg p-4 sm:p-6 mb-6">
             <h2 className="text-lg sm:text-xl font-bold mb-2">Welcome to MOTIV! 🎉</h2>
             <p className="text-sm sm:text-base opacity-90">
-              Complete your profile to start creating amazing rave events. Let's get you set up!
+              Complete your profile to start creating amazing event events. Let's get you set up!
             </p>
           </div>
 

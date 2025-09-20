@@ -85,7 +85,7 @@ export function TicketingStep({
           </h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* Ticketed Rave */}
+            {/* Ticketed Event */}
             <div
               className={`border-2 rounded-lg p-6 cursor-pointer transition-all ${
                 formData.eventType === "ticketed"
@@ -98,12 +98,12 @@ export function TicketingStep({
                 <div className="w-12 h-12 mx-auto mb-3 bg-gray-100 rounded-full flex items-center justify-center">
                   <Ticket className="w-6 h-6 text-gray-600" />
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-1">Ticketed Rave</h3>
-                <p className="text-sm text-gray-600">My rave requires tickets for entry</p>
+                <h3 className="font-semibold text-gray-900 mb-1">Ticketed Event</h3>
+                <p className="text-sm text-gray-600">My event requires tickets for entry</p>
               </div>
             </div>
 
-            {/* Free Rave */}
+            {/* Free Event */}
             <div
               className={`border-2 rounded-lg p-6 cursor-pointer transition-all ${
                 formData.eventType === "free"
@@ -116,8 +116,8 @@ export function TicketingStep({
                 <div className="w-12 h-12 mx-auto mb-3 bg-gray-100 rounded-full flex items-center justify-center">
                   <span className="text-lg font-bold text-gray-600">FREE</span>
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-1">Free Rave</h3>
-                <p className="text-sm text-gray-600">I'm running a free rave</p>
+                <h3 className="font-semibold text-gray-900 mb-1">Free Event</h3>
+                <p className="text-sm text-gray-600">I'm running a free event</p>
               </div>
             </div>
           </div>

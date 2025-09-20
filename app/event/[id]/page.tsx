@@ -832,7 +832,7 @@ export default function EventPage() {
           {/* Event Description */}
           <div>
             <h2 className="text-xl font-semibold text-white mb-4">
-              Rave Description
+              Event Description
             </h2>
             <div className="text-gray-300 leading-relaxed space-y-4">
               {event.description

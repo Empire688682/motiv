@@ -45,7 +45,7 @@ export function NewsletterSubscription() {
               Stay in the Loop
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Subscribe to get updated on new events, exclusive deals, and the hottest raves in Lagos
+              Subscribe to get updated on new events, exclusive deals, and the hottest events in Lagos
             </p>
           </div>
 

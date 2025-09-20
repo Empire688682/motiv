@@ -21,7 +21,7 @@ interface TicketType {
   sold_quantity?: number;
 }
 
-export default function EditRavePage() {
+export default function EditEventPage() {
   const params = useParams();
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
@@ -46,8 +46,8 @@ export default function EditRavePage() {
   // Redirect if no event ID
   useEffect(() => {
     if (!eventId) {
-      console.log("No eventId found, redirecting to raves page");
-      router.push("/hosts/raves");
+      console.log("No eventId found, redirecting to events page");
+      router.push("/hosts/events");
     }
   }, [eventId, router]);
 
@@ -222,7 +222,7 @@ export default function EditRavePage() {
     try {
       await updateEvent(formData);
       toast.success("Event updated successfully!");
-      router.push("/hosts/raves");
+      router.push("/hosts/events");
     } catch (error) {
       console.error("Error saving event:", error);
       const errorMessage = error instanceof Error ? error.message : "Failed to save event";
@@ -304,7 +304,7 @@ export default function EditRavePage() {
             <h2 className="text-lg font-semibold text-red-800 mb-2">Error Loading Event</h2>
             <p className="text-red-600 mb-4">{errorMessage}</p>
             <button
-              onClick={() => router.push("/hosts/raves")}
+              onClick={() => router.push("/hosts/events")}
               className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors"
             >
               Back to Events
@@ -323,7 +323,7 @@ export default function EditRavePage() {
             <h2 className="text-lg font-semibold text-yellow-800 mb-2">Event Not Found</h2>
             <p className="text-yellow-600 mb-4">The event you're trying to edit could not be found.</p>
             <button
-              onClick={() => router.push("/hosts/raves")}
+              onClick={() => router.push("/hosts/events")}
               className="bg-yellow-600 text-white px-4 py-2 rounded-md hover:bg-yellow-700 transition-colors"
             >
               Back to Events
@@ -349,7 +349,7 @@ export default function EditRavePage() {
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-4xl mx-auto p-4 sm:p-6">
         <div className="mb-6">
-          <h1 className="text-2xl font-bold text-gray-900">Edit Rave</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Edit Event</h1>
           <p className="text-gray-600 mt-1">Update your event details</p>
           {saveError && (
             <div className="mt-2 p-3 bg-red-50 border border-red-200 rounded-md">

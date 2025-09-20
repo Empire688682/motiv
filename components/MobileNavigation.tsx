@@ -36,8 +36,8 @@ const navigationItems = [
     icon: Heart,
   },
   {
-    name: "My Raves",
-    href: "/my-raves",
+    name: "My Events",
+    href: "/my-events",
     icon: Calendar,
   },
 ];

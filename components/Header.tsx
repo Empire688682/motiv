@@ -101,7 +101,7 @@ export function Header() {
             onClick={() => router.push("/hosts/signin")}
             className="text-white font-semibold hover:text-gray-300 transition-all duration-300 relative group"
           >
-            Create Rave
+            Create Event
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gray-400 transition-all duration-300 group-hover:w-full"></span>
           </button>
           <button
@@ -222,12 +222,12 @@ export function Header() {
                 </a>
 
                 <a
-                  href="/my-raves"
+                  href="/my-events"
                   onClick={toggleMenu}
                   className="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-gray-800/60 hover:text-white transition-all duration-200 group"
                 >
                   <Calendar className="w-4 h-4 group-hover:text-[#D72638] transition-colors" />
-                  <span className="font-medium text-sm">My Raves</span>
+                  <span className="font-medium text-sm">My Events</span>
                 </a>
 
                 <button
@@ -238,7 +238,7 @@ export function Header() {
                   className="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-gray-800/60 hover:text-white transition-all duration-200 group"
                 >
                   <Plus className="w-4 h-4 group-hover:text-[#D72638] transition-colors" />
-                  <span className="font-medium text-sm">Create Rave</span>
+                  <span className="font-medium text-sm">Create Event</span>
                 </button>
 
                 {/* Divider */}
@@ -443,12 +443,12 @@ export function Header() {
               </a>
 
               <a
-                href="/my-raves"
+                href="/my-events"
                 onClick={toggleMenu}
                 className="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-gray-800/60 hover:text-white transition-all duration-200 group"
               >
                 <Calendar className="w-4 h-4 group-hover:text-[#D72638] transition-colors" />
-                <span className="font-medium text-sm">My Raves</span>
+                <span className="font-medium text-sm">My Events</span>
               </a>
 
               <button
@@ -459,7 +459,7 @@ export function Header() {
                 className="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-gray-800/60 hover:text-white transition-all duration-200 group"
               >
                 <Plus className="w-4 h-4 group-hover:text-[#D72638] transition-colors" />
-                <span className="font-medium text-sm">Create Rave</span>
+                <span className="font-medium text-sm">Create Event</span>
               </button>
 
               {/* Divider */}
