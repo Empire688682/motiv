@@ -114,7 +114,7 @@ export function QRScanner({ onScan, onError, isActive, className = "" }: QRScann
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="text-center text-white">
-            <Loader2 className="w-8 h-8 animate-spin mx-auto mb-2" />
+            <Loader2 className="w-8 h-8 animate-spin mx-auto mb-2 text-red-500" />
             <p>Starting camera...</p>
           </div>
         </div>

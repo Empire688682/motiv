@@ -237,7 +237,7 @@ export default function ScanQRPage() {
                 <div className="flex gap-2">
                   <Button 
                     onClick={handleCameraToggle}
-                    className={`flex-1 touch-manipulation ${
+                    className={`flex-1 touch-manipulation disabled:opacity-100 ${
                       isScanning 
                         ? "bg-red-600 hover:bg-red-700" 
                         : "bg-[#D72638] hover:bg-[#B91E2F]"
@@ -247,12 +247,12 @@ export default function ScanQRPage() {
                   >
                     {isScanning ? (
                       <>
-                        <CameraOff className="w-4 h-4 mr-2" />
+                        <CameraOff className="w-4 h-4 mr-2 align-middle" />
                         Stop Scanning
                       </>
                     ) : (
                       <>
-                        <Camera className="w-4 h-4 mr-2" />
+                        <Camera className="w-4 h-4 mr-2 align-middle" />
                         Start Scanning
                       </>
                     )}
@@ -285,7 +285,7 @@ export default function ScanQRPage() {
                   </div>
                   <Button 
                     onClick={handleManualScan}
-                    className="w-full bg-gray-800 text-white hover:bg-gray-700 touch-manipulation"
+                    className="w-full bg-gray-800 text-white hover:bg-gray-700 touch-manipulation disabled:opacity-100"
                     disabled={!manualQRInput.trim() || !selectedEvent}
                   >
                     Scan Code
