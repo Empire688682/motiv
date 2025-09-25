@@ -97,3 +97,51 @@ body {
 .leaflet-control-zoom a {
   border-radius: 0 !important;
 }
+
+/* Custom Scrollbar Styles */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(75 85 99) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgb(75 85 99);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgb(107 114 128);
+  background-clip: content-box;
+}
+
+/* Profile Modal specific scrollbar */
+.profile-modal-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.profile-modal-scroll::-webkit-scrollbar-track {
+  background: rgba(31, 41, 55, 0.3);
+  border-radius: 10px;
+}
+
+.profile-modal-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #D72638, #a91e2b);
+  border-radius: 10px;
+  border: 1px solid rgba(31, 41, 55, 0.5);
+}
+
+.profile-modal-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #b91e2e, #8b1a26);
+}
