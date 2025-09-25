@@ -21,10 +21,11 @@ export default function TestPasswordResetPage() {
     setError("");
 
     try {
-      console.log("🔄 Making API call to:", `${process.env.NEXT_PUBLIC_API_URL}/auth/forgot-password`);
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://motiv-app-yenh2.ondigitalocean.app/api/v1";
+      console.log("🔄 Making API call to:", `${apiUrl}/auth/forgot-password`);
       console.log("📧 Using email:", email);
       
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/forgot-password`, {
+      const response = await fetch(`${apiUrl}/auth/forgot-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -107,8 +108,8 @@ export default function TestPasswordResetPage() {
         <div className="mt-6 p-4 bg-gray-800/30 rounded-xl">
           <h3 className="text-sm font-medium text-white mb-2">Debug Info:</h3>
           <div className="text-xs text-gray-400 space-y-1">
-            <div>API URL: {process.env.NEXT_PUBLIC_API_URL || 'Not set'}</div>
-            <div>Full endpoint: {process.env.NEXT_PUBLIC_API_URL}/auth/forgot-password</div>
+            <div>API URL: {process.env.NEXT_PUBLIC_API_URL || 'Using fallback'}</div>
+            <div>Full endpoint: {(process.env.NEXT_PUBLIC_API_URL || "https://motiv-app-yenh2.ondigitalocean.app/api/v1")}/auth/forgot-password</div>
           </div>
         </div>
 

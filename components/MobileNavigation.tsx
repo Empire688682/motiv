@@ -25,6 +25,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
+  SheetOverlay,
 } from "@/components/ui/sheet";
 
 const navigationItems = [
@@ -98,6 +99,7 @@ export function MobileNavigation() {
 
           {/* Menu Button */}
           <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+            <SheetOverlay className="z-[65]" />
             <SheetTrigger asChild>
               <button className="flex flex-col items-center justify-center space-y-1 text-gray-400 hover:text-gray-300 transition-colors touch-manipulation">
                 <Menu className="w-5 h-5" />
@@ -106,15 +108,15 @@ export function MobileNavigation() {
             </SheetTrigger>
             <SheetContent
               side="bottom"
-              className="h-[80vh] rounded-t-2xl bg-[#1a1a1a] border-gray-700 [&>button]:text-white [&>button]:hover:text-gray-300 z-[60]"
+              className="h-[100vh] rounded-t-2xl bg-[#1a1a1a] border-gray-700 [&>button]:text-white [&>button]:hover:text-gray-300 z-[70] flex flex-col"
             >
-              <SheetHeader className="text-left mb-6">
+              <SheetHeader className="text-left mb-6 flex-shrink-0">
                 <SheetTitle className="text-xl font-bold text-white">
                   Menu
                 </SheetTitle>
               </SheetHeader>
 
-              <div className="space-y-1">
+              <div className="space-y-1 flex-1 overflow-y-auto pb-6">
                 <button
                   onClick={() => {
                     setIsProfileModalOpen(true);

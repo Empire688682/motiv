@@ -100,10 +100,11 @@ export function UserProfileModal({
 
     const userEmail = user?.email || user?.Email;
     console.log("🔄 Password reset requested for:", userEmail);
-    console.log("🌐 API URL:", process.env.NEXT_PUBLIC_API_URL);
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://motiv-app-yenh2.ondigitalocean.app/api/v1";
+    console.log("🌐 API URL:", apiUrl);
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/forgot-password`, {
+      const response = await fetch(`${apiUrl}/auth/forgot-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

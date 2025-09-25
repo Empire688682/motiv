@@ -219,8 +219,9 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
     setForgotPasswordMessage("");
 
     try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://motiv-app-yenh2.ondigitalocean.app/api/v1";
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/auth/forgot-password`,
+        `${apiUrl}/auth/forgot-password`,
         {
           method: "POST",
           headers: {

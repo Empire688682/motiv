@@ -83,7 +83,8 @@ export const attendeeService = {
     if (filters.status) params.append('status', filters.status);
     if (filters.search) params.append('search', filters.search);
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/hosts/me/attendees/export?${params.toString()}`, {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://motiv-app-yenh2.ondigitalocean.app/api/v1";
+    const response = await fetch(`${apiUrl}/hosts/me/attendees/export?${params.toString()}`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('motiv_token')}`,
       },
