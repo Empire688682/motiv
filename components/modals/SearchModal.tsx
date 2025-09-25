@@ -62,7 +62,13 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
         </DialogHeader>
         
         <div className="space-y-4 mt-4">
-          <div className="space-y-3">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSearch();
+            }}
+            className="space-y-3"
+          >
             <div className="relative">
               <div className="flex items-center space-x-2">
                 <Input
@@ -73,10 +79,10 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   onFocus={() => setShowSuggestions(searchQuery.length >= 2 && suggestions.length > 0)}
                   onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
                   className="flex-1 bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-[#D72638] focus:ring-[#D72638]"
-                  onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+                  onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
                 />
               </div>
-              
+
               {/* Search Suggestions */}
               {showSuggestions && suggestions.length > 0 && (
                 <div className="absolute top-full left-0 right-0 mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-lg z-50">
@@ -93,7 +99,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 </div>
               )}
             </div>
-            
+
             <div className="flex items-center space-x-2">
               <Input
                 type="text"
@@ -101,10 +107,10 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 className="flex-1 bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-[#D72638] focus:ring-[#D72638]"
-                onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+                onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
               />
-              <Button 
-                onClick={handleSearch}
+              <Button
+                type="submit"
                 className="bg-gradient-to-r from-[#D72638] to-[#B91E2F] hover:from-[#B91E2F] hover:to-[#A01A2A] text-white px-4 py-2 rounded-lg hover:scale-105 transition-all duration-200"
               >
                 <Search size={16} />
@@ -130,7 +136,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 ))}
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </DialogContent>
     </Dialog>
