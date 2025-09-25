@@ -143,10 +143,7 @@ export function UserProfileModal({
                   <User className="w-5 h-5 text-[#D72638]" />
                 </div>
                 <div>
-                  <DialogTitle className="text-xl font-bold text-white">
-                    My Profile
-                  </DialogTitle>
-                  <DialogDescription className="text-gray-400 text-sm">
+                  <DialogDescription className="text-white text-sm">
                     Manage your account information
                   </DialogDescription>
                 </div>
