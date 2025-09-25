@@ -101,9 +101,24 @@ export function UserProfileModal({
           <DialogDescription className="text-gray-300">
             Manage your account information
           </DialogDescription>
+          <div className="absolute top-4 right-4 flex items-center gap-2">
+            <div
+              onClick={onClose}
+              className="text-white cursor-pointer hover:text-gray-300"
+            >
+              Close
+            </div>
+            <div
+              onClick={onLogout}
+              className="text-red-500 cursor-pointer hover:text-red-400 flex items-center justify-center gap-2"
+            >
+              <LogOut className="w-4 h-4" />
+              Sign Out
+            </div>
+          </div>
         </DialogHeader>
 
-        <div className="space-y-6">
+        <div className="space-y-6 overflow-y-auto">
           {/* Profile Avatar */}
           <div className="flex items-center space-x-4">
             <div className="relative">
@@ -369,21 +384,7 @@ export function UserProfileModal({
                   </div>
                 )}
 
-                <div className="pt-4 space-y-2 text-center">
-                  <div
-                    onClick={onClose}
-                    className="text-white cursor-pointer hover:text-gray-300"
-                  >
-                    Close
-                  </div>
-                  <div
-                    onClick={onLogout}
-                    className="text-red-500 cursor-pointer hover:text-red-400 flex items-center justify-center gap-2"
-                  >
-                    <LogOut className="w-4 h-4" />
-                    Sign Out
-                  </div>
-                </div>
+
               </>
             )}
           </div>
