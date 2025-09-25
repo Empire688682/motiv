@@ -223,6 +223,7 @@ export default function AdminUsersPage() {
                   </div>
                   
                   <div className="flex items-center gap-2 sm:gap-4 mt-2 sm:mt-0">
+                    <div className="text-right">
                       <Badge className={`${getRoleBadgeColor(user.role)} text-white`}>
                         {user.role}
                       </Badge>
