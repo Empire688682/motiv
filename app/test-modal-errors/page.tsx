@@ -22,7 +22,7 @@ export default function TestModalErrors() {
   };
 
   const handleLogout = () => {
-    console.log("Logout clicked");
+    // Logout clicked
   };
 
   return (

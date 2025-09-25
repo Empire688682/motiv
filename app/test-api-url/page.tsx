@@ -9,7 +9,6 @@ export default function TestApiUrl() {
   const checkApiUrl = () => {
     const url = process.env.NEXT_PUBLIC_API_URL || "https://motiv-app-yenh2.ondigitalocean.app/api/v1";
     setApiUrl(url);
-    console.log("🌐 API URL:", url);
   };
 
   const testApiConnection = async () => {

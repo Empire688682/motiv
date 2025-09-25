@@ -99,9 +99,7 @@ export function UserProfileModal({
     setPasswordResetMessage("");
 
     const userEmail = user?.email || user?.Email;
-    console.log("🔄 Password reset requested for:", userEmail);
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://motiv-app-yenh2.ondigitalocean.app/api/v1";
-    console.log("🌐 API URL:", apiUrl);
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://motiv-app-yenh2.ondigitalocean.app/api/v1";
 
     try {
       const response = await fetch(`${apiUrl}/auth/forgot-password`, {
@@ -114,16 +112,14 @@ export function UserProfileModal({
         }),
       });
 
-      console.log("📊 Response status:", response.status);
-      const data = await response.json();
-      console.log("📋 Response data:", data);
+  const data = await response.json();
 
       if (response.ok) {
         setPasswordResetMessage(data.message || "Password reset link sent to your email");
-        console.log("✅ Password reset email sent successfully");
+        
       } else {
         setPasswordResetMessage(data.error || "Failed to send reset email");
-        console.log("❌ Password reset failed:", data.error);
+        
       }
     } catch (error) {
       console.error("❌ Network error during password reset:", error);

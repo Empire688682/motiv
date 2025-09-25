@@ -22,8 +22,7 @@ export default function TestPasswordResetPage() {
 
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://motiv-app-yenh2.ondigitalocean.app/api/v1";
-      console.log("🔄 Making API call to:", `${apiUrl}/auth/forgot-password`);
-      console.log("📧 Using email:", email);
+      
       
       const response = await fetch(`${apiUrl}/auth/forgot-password`, {
         method: 'POST',
@@ -35,16 +34,14 @@ export default function TestPasswordResetPage() {
         }),
       });
 
-      console.log("📊 Response status:", response.status);
-      const data = await response.json();
-      console.log("📋 Response data:", data);
+  const data = await response.json();
 
       if (response.ok) {
         setMessage(data.message || "Password reset link sent to your email");
-        console.log("✅ Success!");
+        
       } else {
         setError(data.error || "Failed to send reset email");
-        console.log("❌ Error:", data.error);
+        
       }
     } catch (error) {
       console.error("❌ Network error:", error);

@@ -132,7 +132,7 @@ export default function TestAuthErrorsPage() {
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
           onAuthSuccess={() => {
-            console.log("✅ Authentication successful!");
+            
             setIsModalOpen(false);
           }}
         />

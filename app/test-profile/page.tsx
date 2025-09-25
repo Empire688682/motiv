@@ -19,12 +19,12 @@ export default function TestProfilePage() {
   };
 
   const handleUpdateProfile = (updatedUser: any) => {
-    console.log("Profile updated:", updatedUser);
+      // Profile updated logic here
     // In a real app, this would make an API call
   };
 
   const handleLogout = () => {
-    console.log("User logged out");
+      // logout handler
     setIsModalOpen(false);
   };
 
