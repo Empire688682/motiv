@@ -23,7 +23,7 @@ const anton = Anton({
 
 export const metadata: Metadata = {
   title: "MOTIV - Discover Lagos Events",
-  description: "Unfiltered Lagos events. Curated events, no tickets lost.",
+  description: "Unfiltered Lagos events. Curated events, no tickets lost",
     generator: 'v0.dev'
 }
 
