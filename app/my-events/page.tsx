@@ -315,7 +315,7 @@ export default function MyEventsPage() {
           {/* Stats Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
             <Card className="bg-[#1a1a1a] border-gray-800">
-              <CardContent className="p-4 sm:p-6">
+              <CardContent className="p-5 sm:p-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-xs sm:text-sm font-medium text-gray-400">
@@ -331,7 +331,7 @@ export default function MyEventsPage() {
             </Card>
 
             <Card className="bg-[#1a1a1a] border-gray-800">
-              <CardContent className="p-4 sm:p-6">
+              <CardContent className="p-5 sm:p-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-xs sm:text-sm font-medium text-gray-400">
@@ -347,7 +347,7 @@ export default function MyEventsPage() {
             </Card>
 
             <Card className="bg-[#1a1a1a] border-gray-800">
-              <CardContent className="p-4 sm:p-6">
+              <CardContent className="p-5 sm:p-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-xs sm:text-sm font-medium text-gray-400">

@@ -419,7 +419,7 @@ export function PaymentModal({
 
                       <Button
                         type="submit"
-                        className="flex-1 bg-[#D72638] hover:bg-[#B91E2F]"
+                        className="flex-1 bg-[#D72638] text-white"
                       >
                         {currentAttendeeIndex + 1 < totalTickets
                           ? `Next Attendee (${
@@ -493,7 +493,7 @@ export function PaymentModal({
                         type="button"
                         variant="outline"
                         onClick={() => setStep("details")}
-                        className="w-full border-gray-600 text-white bg-transparent hover:bg-gray-800"
+                        className="w-full border-gray-600 text-gray-800 bg-white hover:bg-gray-50"
                       >
                         Back to Attendee Details
                       </Button>

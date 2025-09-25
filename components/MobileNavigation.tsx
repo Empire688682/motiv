@@ -108,7 +108,7 @@ export function MobileNavigation() {
             </SheetTrigger>
             <SheetContent
               side="bottom"
-              className="h-[100vh] rounded-t-2xl bg-[#1a1a1a] border-gray-700 [&>button]:text-white [&>button]:hover:text-gray-300 z-[70] flex flex-col"
+              className="h-auto max-h-[50vh] rounded-t-2xl bg-[#1a1a1a] border-gray-700 [&>button]:text-white [&>button]:hover:text-gray-300 z-[70] flex flex-col"
             >
               <SheetHeader className="text-left mb-6 flex-shrink-0">
                 <SheetTitle className="text-xl font-bold text-white">
