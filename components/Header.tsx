@@ -359,7 +359,13 @@ export function Header() {
                 </div>
               </div>
             ) : user ? (
-              <div className="flex items-center space-x-3 p-3 bg-gray-900/50 rounded-lg mb-4">
+              <button
+                onClick={() => {
+                  setIsProfileModalOpen(true);
+                  setIsMenuOpen(false);
+                }}
+                className="flex items-center space-x-3 p-3 bg-gray-900/50 rounded-lg mb-4 w-full"
+              >
                 {avatarUrl && !avatarError ? (
                   <img
                     src={avatarUrl}
@@ -378,7 +384,7 @@ export function Header() {
                     {(user.name || user.Name)?.charAt(0)?.toUpperCase()}
                   </div>
                 )}
-                <div className="flex-1 min-w-0">
+                <div className="flex-1 min-w-0 text-left">
                   <p className="text-white font-medium truncate text-sm">
                     {user.name || user.Name}
                   </p>
@@ -386,18 +392,7 @@ export function Header() {
                     {user.email || user.Email}
                   </p>
                 </div>
-                <button
-                  onClick={() => {
-                    setIsProfileModalOpen(true);
-                    setIsMenuOpen(false);
-                  }}
-                  className="text-gray-400 hover:text-white transition-colors p-1"
-                >
-                  <div className="w-4 h-4 flex items-center justify-center">
-                    <span className="text-xs font-bold">•••</span>
-                  </div>
-                </button>
-              </div>
+              </button>
             ) : (
               <button
                 onClick={() => {

@@ -41,7 +41,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               </div>
               <div>
                 <p className="text-sm text-gray-400">Email</p>
-                <p className="text-white font-medium">support@motiv.com</p>
+                <p className="text-white font-medium">support@motiv.ng</p>
               </div>
             </div>
             

@@ -93,7 +93,7 @@ export function UserProfileModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[400px] bg-[#1a1a1a] border-gray-700 [&>button]:text-white [&>button]:hover:text-gray-300">
+      <DialogContent className="sm:max-w-[400px] bg-[#1a1a1a] border-gray-700 [&>button]:text-white [&>button]:hover:text-gray-300 max-h-screen md:max-h-[80vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-xl font-bold text-white">
             My Profile

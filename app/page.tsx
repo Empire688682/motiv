@@ -45,7 +45,7 @@ export default function HomePage() {
 
         {/* Popular Events Section */}
         <ScrollAnimation>
-          <section className="px-4 md:px-6 py-8">
+          <section id="events-section" className="px-4 md:px-6 py-8">
             <div className="max-w-7xl mx-auto">
               <h2 className="text-2xl md:text-3xl font-bold mb-6">
                 Events in Lagos

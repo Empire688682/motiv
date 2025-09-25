@@ -5,6 +5,7 @@ import { EventCard } from "./EventCard";
 import { Button } from "./ui/button";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { SearchModal } from "./modals/SearchModal";
 
 interface EventListProps {
   searchQuery?: string;
@@ -17,6 +18,7 @@ interface EventListProps {
 
 export function EventList({ searchQuery, tags, location, dateFrom, dateTo, eventType }: EventListProps) {
   const [mounted, setMounted] = useState(false);
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
   const {
     data,
@@ -96,6 +98,10 @@ export function EventList({ searchQuery, tags, location, dateFrom, dateTo, event
 
   return (
     <div className="space-y-6">
+      <SearchModal
+        isOpen={isSearchModalOpen}
+        onClose={() => setIsSearchModalOpen(false)}
+      />
       {/* Events Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {events.map((event) => {
@@ -139,19 +145,11 @@ export function EventList({ searchQuery, tags, location, dateFrom, dateTo, event
       {hasNextPage && (
         <div className="text-center">
           <Button
-            onClick={() => fetchNextPage()}
-            disabled={isFetchingNextPage}
+            onClick={() => setIsSearchModalOpen(true)}
             variant="outline"
             size="lg"
           >
-            {isFetchingNextPage ? (
-              <>
-                <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                Loading...
-              </>
-            ) : (
-              "Load More Events"
-            )}
+            Find more events
           </Button>
         </div>
       )}

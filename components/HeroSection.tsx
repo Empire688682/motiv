@@ -24,9 +24,11 @@ export function HeroSection() {
           <p className="text-gray-300 text-lg md:text-xl max-w-md leading-relaxed">
             Unfiltered Lagos events. Curated events, no tickets lost, just vibes.
           </p>
+          <a href="#events-section">
           <Button className="bg-gradient-to-r from-[#D72638] to-[#B91E2F] hover:from-[#B91E2F] hover:to-[#A01A2A] text-white px-8 py-3 text-lg rounded-full shadow-lg hover:shadow-[#D72638]/30 hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
             <span className="group-hover:translate-x-1 transition-transform duration-300">Get Started</span>
           </Button>
+          </a>
         </div>
 
         <div className="relative group">

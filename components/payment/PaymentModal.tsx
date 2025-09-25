@@ -202,7 +202,7 @@ export function PaymentModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={handleModalClose}>
-    <DialogContent className="w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+    <DialogContent className="w-full max-w-md md:max-w-4xl max-h-[95vh] md:max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold">
             {step === "details"
@@ -236,7 +236,7 @@ export function PaymentModal({
           )}
         </DialogHeader>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Event Summary */}
           <Card>
             <CardHeader>

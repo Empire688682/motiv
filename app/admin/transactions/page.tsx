@@ -108,7 +108,7 @@ export default function AdminTransactionsPage() {
   }, 0);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-4 md:p-8">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
@@ -208,7 +208,7 @@ export default function AdminTransactionsPage() {
               {transactions.map((transaction) => (
                 <div
                   key={transaction.id}
-                  className="flex items-center justify-between p-4 bg-gray-800 rounded-lg"
+                  className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 sm:p-4 bg-gray-800 rounded-lg"
                 >
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center">
@@ -227,7 +227,7 @@ export default function AdminTransactionsPage() {
                     </div>
                   </div>
                   
-                  <div className="text-right">
+                  <div className="text-left sm:text-right mt-2 sm:mt-0">
                     <div className="font-semibold text-white">
                       ₦{transaction.amount.toLocaleString()}
                     </div>

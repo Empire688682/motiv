@@ -17,7 +17,7 @@ interface ContactModalProps {
 
 export function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const handleEmailClick = () => {
-    window.open('mailto:support@motiv.com', '_blank');
+    window.open('mailto:support@motiv.ng', '_blank');
   };
 
   const handlePhoneClick = () => {
@@ -44,7 +44,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               <Mail className="w-5 h-5 text-[#D72638]" />
               <div className="flex-1 text-left">
                 <div className="font-medium text-gray-900">Email Support</div>
-                <div className="text-sm text-gray-600">support@motiv.com</div>
+                <div className="text-sm text-gray-600">support@motiv.ng</div>
               </div>
               <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-[#D72638]" />
             </button>

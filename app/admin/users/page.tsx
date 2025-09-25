@@ -147,7 +147,7 @@ export default function AdminUsersPage() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-4 md:p-8">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
@@ -209,7 +209,7 @@ export default function AdminUsersPage() {
               {users.map((user) => (
                 <div
                   key={user.id}
-                  className="flex items-center justify-between p-4 bg-gray-800 rounded-lg"
+                  className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 sm:p-4 bg-gray-800 rounded-lg"
                 >
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 bg-[#D72638] rounded-full flex items-center justify-center text-white font-semibold">
@@ -222,8 +222,7 @@ export default function AdminUsersPage() {
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-4">
-                    <div className="text-right">
+                  <div className="flex items-center gap-2 sm:gap-4 mt-2 sm:mt-0">
                       <Badge className={`${getRoleBadgeColor(user.role)} text-white`}>
                         {user.role}
                       </Badge>
@@ -291,7 +290,7 @@ export default function AdminUsersPage() {
 
       {/* User Details Modal */}
       <Dialog open={showUserModal} onOpenChange={setShowUserModal}>
-        <DialogContent className="max-w-2xl bg-[#1a1a1a] border-gray-800 text-white">
+        <DialogContent className="w-full max-w-md md:max-w-2xl max-h-[95vh] md:max-h-[90vh] overflow-y-auto bg-[#1a1a1a] border-gray-800 text-white">
           <DialogHeader>
             <DialogTitle>User Details</DialogTitle>
           </DialogHeader>
