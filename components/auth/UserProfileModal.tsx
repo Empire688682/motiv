@@ -78,6 +78,10 @@ export function UserProfileModal({
     setPasswordResetLoading(true);
     setPasswordResetMessage("");
 
+    const userEmail = user?.email || user?.Email;
+    console.log("🔄 Password reset requested for:", userEmail);
+    console.log("🌐 API URL:", process.env.NEXT_PUBLIC_API_URL);
+
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/forgot-password`, {
         method: 'POST',
@@ -85,18 +89,23 @@ export function UserProfileModal({
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email: user?.email || user?.Email,
+          email: userEmail,
         }),
       });
 
+      console.log("📊 Response status:", response.status);
       const data = await response.json();
+      console.log("📋 Response data:", data);
 
       if (response.ok) {
-        setPasswordResetMessage("Password reset link sent to your email");
+        setPasswordResetMessage(data.message || "Password reset link sent to your email");
+        console.log("✅ Password reset email sent successfully");
       } else {
         setPasswordResetMessage(data.error || "Failed to send reset email");
+        console.log("❌ Password reset failed:", data.error);
       }
     } catch (error) {
+      console.error("❌ Network error during password reset:", error);
       setPasswordResetMessage("Network error. Please try again.");
     } finally {
       setPasswordResetLoading(false);
