@@ -47,9 +47,17 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
   const isLoading = isLoggingIn || isSigningUp || isGoogleAuthenticating;
   const [forgotPasswordLoading, setForgotPasswordLoading] = useState(false);
   const [forgotPasswordMessage, setForgotPasswordMessage] = useState("");
+  const [authError, setAuthError] = useState("");
+  const [authSuccess, setAuthSuccess] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
+    
+    // Clear error messages when user starts typing
+    if (authError) {
+      setAuthError("");
+    }
+    
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
@@ -59,23 +67,40 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
   };
 
   const handleGoogleAuth = async () => {
+    // Clear previous error messages
+    setAuthError("");
+    setAuthSuccess("");
+    
     try {
       await googleAuth();
+      
+      // Show success message
+      setAuthSuccess("Google authentication successful! Redirecting...");
+      
       // Call success callback if provided
       if (onAuthSuccess) {
         onAuthSuccess();
       }
-      // Only close modal on successful Google auth
-      onClose();
-    } catch (error) {
-      // Error handling is done in the hook
-      // Don't close modal on error - let user try again
+      
+      // Close modal on successful Google auth after brief delay
+      setTimeout(() => {
+        onClose();
+        setAuthSuccess("");
+      }, 1000);
+    } catch (error: any) {
+      // Display specific error message and keep modal open
+      setAuthError(error.message || "Google authentication failed. Please try again.");
       console.error("Google auth error:", error);
+      // Modal stays open so user can try again
     }
   };
 
   const handleEmailAuth = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Clear previous error and success messages
+    setAuthError("");
+    setAuthSuccess("");
 
     try {
       if (isLogin) {
@@ -94,23 +119,31 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
             // Don't fail the login if newsletter update fails
           }
         }
-        // Call success callback if provided*
+        
+        // Show success message
+        setAuthSuccess("Login successful! Redirecting...");
+        
+        // Call success callback if provided
         if (onAuthSuccess) {
           onAuthSuccess();
         }
-        // Close modal on successful login
-        onClose();
-        // Reset form
-        setFormData({
-          name: "",
-          username: "",
-          email: "",
-          password: "",
-          confirmPassword: "",
-          role: "host" as "host" | "guest" | "admin" | "superhost",
-          newsletterSubscribed: false,
-          exclusive: false,
-        });
+        
+        // Close modal on successful login after a brief delay
+        setTimeout(() => {
+          onClose();
+          // Reset form
+          setFormData({
+            name: "",
+            username: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
+            role: "host" as "host" | "guest" | "admin" | "superhost",
+            newsletterSubscribed: false,
+            exclusive: false,
+          });
+          setAuthSuccess("");
+        }, 1000);
       } else {
         // Wait for signup to complete before closing modal
         await signup({
@@ -123,28 +156,37 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
           // Send newsletterSubscribed as true if either newsletter or exclusive is checked
           newsletterSubscribed: formData.newsletterSubscribed || formData.exclusive,
         });
+        
+        // Show success message
+        setAuthSuccess("Account created successfully! Redirecting...");
+        
         // Call success callback if provided
         if (onAuthSuccess) {
           onAuthSuccess();
         }
-        // Only close modal if signup was successful
-        onClose();
-        // Reset form
-        setFormData({
-          name: "",
-          username: "",
-          email: "",
-          password: "",
-          confirmPassword: "",
-          role: "host" as "host" | "guest" | "admin" | "superhost",
-          newsletterSubscribed: false,
-          exclusive: false,
-        });
+        
+        // Close modal on successful signup after a brief delay
+        setTimeout(() => {
+          onClose();
+          // Reset form
+          setFormData({
+            name: "",
+            username: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
+            role: "host" as "host" | "guest" | "admin" | "superhost",
+            newsletterSubscribed: false,
+            exclusive: false,
+          });
+          setAuthSuccess("");
+        }, 1000);
       }
-    } catch (error) {
-      // Error handling is done in the hook
-      // Don't close modal on error - let user try again
+    } catch (error: any) {
+      // Display specific error message and keep modal open
+      setAuthError(error.message || (isLogin ? "Login failed. Please try again." : "Signup failed. Please try again."));
       console.error("Auth error:", error);
+      // Modal stays open so user can try again
     }
   };
 
@@ -152,6 +194,8 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
     setIsLogin(!isLogin);
     setIsForgotPassword(false);
     setForgotPasswordMessage("");
+    setAuthError(""); // Clear auth errors when switching modes
+    setAuthSuccess(""); // Clear success messages
     setFormData({
       name: "",
       username: "",
@@ -567,6 +611,20 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
                     >
                       Terms and Conditions
                     </a>
+                  </div>
+                )}
+
+                {/* Error Message */}
+                {authError && (
+                  <div className="bg-red-900/20 border border-red-700/50 text-red-300 px-4 py-3 rounded-lg text-sm">
+                    {authError}
+                  </div>
+                )}
+
+                {/* Success Message */}
+                {authSuccess && (
+                  <div className="bg-green-900/20 border border-green-700/50 text-green-300 px-4 py-3 rounded-lg text-sm">
+                    {authSuccess}
                   </div>
                 )}
 

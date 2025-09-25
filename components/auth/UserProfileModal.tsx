@@ -46,6 +46,9 @@ export function UserProfileModal({
   const [isChangingPassword, setIsChangingPassword] = useState(false);
   const [passwordResetLoading, setPasswordResetLoading] = useState(false);
   const [passwordResetMessage, setPasswordResetMessage] = useState("");
+  const [isUpdatingProfile, setIsUpdatingProfile] = useState(false);
+  const [updateError, setUpdateError] = useState("");
+  const [updateSuccess, setUpdateSuccess] = useState("");
   const [formData, setFormData] = useState({
     name: user?.name || user?.Name || "",
     username: user?.username || user?.Username || "",
@@ -56,12 +59,27 @@ export function UserProfileModal({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    // Clear error and success messages when user starts typing
+    if (updateError) setUpdateError("");
+    if (updateSuccess) setUpdateSuccess("");
   };
 
-  const handleSave = () => {
-    const updatedUser = { ...user, ...formData };
-    onUpdateProfile(updatedUser);
-    setIsEditing(false);
+  const handleSave = async () => {
+    setIsUpdatingProfile(true);
+    setUpdateError("");
+    setUpdateSuccess("");
+    
+    try {
+      const updatedUser = { ...user, ...formData };
+      await onUpdateProfile(updatedUser);
+      setUpdateSuccess("Profile updated successfully!");
+      setIsEditing(false);
+    } catch (error: any) {
+      setUpdateError(error.message || "Failed to update profile. Please try again.");
+      // Keep editing mode open so user can retry
+    } finally {
+      setIsUpdatingProfile(false);
+    }
   };
 
   const handleCancel = () => {
@@ -71,6 +89,8 @@ export function UserProfileModal({
       email: user?.email || user?.Email || "",
       location: user?.location || "",
     });
+    setUpdateError("");
+    setUpdateSuccess("");
     setIsEditing(false);
   };
 
@@ -318,14 +338,38 @@ export function UserProfileModal({
                     </div>
                   </div>
 
+                  {/* Error Message */}
+                  {updateError && (
+                    <div className="bg-red-900/20 border border-red-700/50 text-red-300 px-4 py-3 rounded-lg text-sm">
+                      {updateError}
+                    </div>
+                  )}
+
+                  {/* Success Message */}
+                  {updateSuccess && (
+                    <div className="bg-green-900/20 border border-green-700/50 text-green-300 px-4 py-3 rounded-lg text-sm">
+                      {updateSuccess}
+                    </div>
+                  )}
+
                   {/* Action Buttons */}
                   <div className="flex gap-3 pt-4">
                     <button
                       onClick={handleSave}
-                      className="flex-1 bg-[#D72638] hover:bg-[#b91e2e] text-white font-medium py-3 px-6 rounded-xl transition-colors flex items-center justify-center gap-2"
+                      disabled={isUpdatingProfile}
+                      className="flex-1 bg-[#D72638] hover:bg-[#b91e2e] disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-medium py-3 px-6 rounded-xl transition-colors flex items-center justify-center gap-2"
                     >
-                      <Save className="w-4 h-4" />
-                      Save Changes
+                      {isUpdatingProfile ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          Saving...
+                        </>
+                      ) : (
+                        <>
+                          <Save className="w-4 h-4" />
+                          Save Changes
+                        </>
+                      )}
                     </button>
                     <button
                       onClick={handleCancel}
