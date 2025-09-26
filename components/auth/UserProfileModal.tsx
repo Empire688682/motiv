@@ -142,11 +142,11 @@ export function UserProfileModal({
                 <div className="p-2 bg-[#D72638]/10 rounded-lg">
                   <User className="w-5 h-5 text-[#D72638]" />
                 </div>
-                <div>
+                {/* <div>
                   <DialogDescription className="text-white text-sm">
                     Manage your account information
                   </DialogDescription>
-                </div>
+                </div> */}
               </div>
               
               {/* Action Buttons */}
