@@ -80,7 +80,7 @@ export function PopularEventsList() {
   return (
     <div className="space-y-6">
       {/* Events Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 bg-red/700">
         {events.map((event, index) => {
           console.log(`Rendering event ${index + 1}:`, event.id || event.ID, event.title || event.Title);
           try {

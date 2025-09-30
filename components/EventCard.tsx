@@ -103,9 +103,9 @@ export function EventCard({
   };
 
   return (
-    <Link href={`/event/${eventId}`} className="block">
-      <Card className="bg-gradient-to-br from-[#1a1a1a] to-[#151515] border-[#333] overflow-hidden hover:border-gray-500 transition-all duration-300 hover:shadow-lg group cursor-pointer hover:-translate-y-1">
-        <CardContent className="p-0">
+    <Link href={`/event/${eventId}`} className="block justify-center">
+      <Card className="bg-gradient-to-br from-[#1a1a1a] to-[#151515] border-[#333] mx-auto overflow-hidden hover:border-gray-500 transition-all duration-300 hover:shadow-lg group cursor-pointer hover:-translate-y-1 w-full">
+        <CardContent className="p-0 w-full">
           <div className="relative overflow-hidden">
             <Image
               src={image}
@@ -182,13 +182,12 @@ export function EventCard({
                   {day}
                 </div>
               </div>
-              <div className="flex-1 min-w-0">
+              <div className="flex-1 min-w-0 overflow-hidden">
                 <h3 className="font-bold text-sm sm:text-base md:text-lg text-white mb-1 group-hover:text-gray-200 transition-colors duration-300 truncate">
                   {title}
                 </h3>
-                <p className="text-gray-400 text-xs sm:text-sm mb-1 flex items-center gap-1 truncate">
-                  <span className="w-1 h-1 bg-[#D72638] rounded-full flex-shrink-0"></span>
-                  <span className="truncate">{location}</span>
+                <p className="text-gray-400 text-xs sm:text-sm mb-1 flex items-center gap-1 w-full flex-wrap">
+                  <span className="py-2">{location}</span>
                 </p>
                 <p className="text-gray-400 text-xs sm:text-sm mb-2 truncate">
                   {time}
