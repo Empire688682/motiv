@@ -167,7 +167,7 @@ export default function HostAttendeesPage() {
         
         <div className="flex gap-3 sm:gap-4">
           <Select value={selectedEvent} onValueChange={setSelectedEvent}>
-            <SelectTrigger className="flex-1 sm:w-40">
+            <SelectTrigger className="flex-1 flex sm:w-40">
               <SelectValue placeholder="All Events" />
             </SelectTrigger>
             <SelectContent>
@@ -179,7 +179,7 @@ export default function HostAttendeesPage() {
           </Select>
 
           <Select value={selectedTicketType} onValueChange={setSelectedTicketType}>
-            <SelectTrigger className="flex-1 sm:w-40">
+            <SelectTrigger className="flex-1 flex sm:w-40">
               <SelectValue placeholder="All Ticket Types" />
             </SelectTrigger>
             <SelectContent>

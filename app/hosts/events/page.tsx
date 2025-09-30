@@ -316,7 +316,7 @@ export default function HostEventsPage() {
             <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDeleteConfirm}
-              className="bg-red-600 hover:bg-red-700 focus:ring-red-600"
+              className="bg-red-600 focus:ring-red-600 ml-2"
             >
               Delete
             </AlertDialogAction>
