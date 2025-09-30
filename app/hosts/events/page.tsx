@@ -180,7 +180,7 @@ export default function HostEventsPage() {
         
         <div className="flex gap-3 sm:gap-4">
           <Select value={statusFilter} onValueChange={setStatusFilter}>
-            <SelectTrigger className="flex-1 sm:w-32">
+            <SelectTrigger className="flex-1 sm:w-32 flex">
               <SelectValue placeholder="All Status" />
             </SelectTrigger>
             <SelectContent>
