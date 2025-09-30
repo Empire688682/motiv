@@ -126,7 +126,7 @@ export default function HostDashboard() {
             </Button>
           )}
           <Button 
-            className="bg-[#D72638] hover:bg-[#B91E2F] text-white w-full sm:w-auto touch-manipulation"
+            className="bg-[#D72638]  text-white w-full sm:w-auto touch-manipulation"
             onClick={() => router.push('/hosts/create-event')}
           >
             <Plus className="w-4 h-4 mr-2" />

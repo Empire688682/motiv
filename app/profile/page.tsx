@@ -106,7 +106,7 @@ export default function ProfilePage() {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <button className="absolute bottom-0 right-0 p-2 bg-[#D72638] text-white rounded-full hover:bg-[#B91E2F] transition-colors touch-manipulation">
+                  <button className="absolute bottom-0 right-0 p-2 bg-[#D72638] text-white rounded-full  transition-colors touch-manipulation">
                     <Camera className="w-4 h-4" />
                   </button>
                 </div>
@@ -151,7 +151,7 @@ export default function ProfilePage() {
 
                 {isEditing ? (
                   <div className="flex gap-2">
-                    <Button onClick={handleSave} className="flex-1 bg-[#D72638] hover:bg-[#B91E2F]">
+                    <Button onClick={handleSave} className="flex-1 bg-[#D72638] ">
                       Save
                     </Button>
                     <Button onClick={handleCancel} variant="outline" className="flex-1">

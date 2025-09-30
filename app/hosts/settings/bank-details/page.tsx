@@ -141,7 +141,7 @@ export default function HostBankDetailsPage() {
               <div className="space-y-4">
                 <button
                   type="submit"
-                  className="bg-[#D72638] hover:bg-[#B91E2F] text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200"
+                  className="bg-[#D72638]  text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200"
                 >
                   Save Bank Details
                 </button>

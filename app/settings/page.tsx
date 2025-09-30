@@ -307,7 +307,7 @@ export default function SettingsPage() {
 
           {/* Save Button */}
           <div className="flex justify-end pt-6">
-            <Button className="bg-[#D72638] hover:bg-[#B91E2F] text-white px-8">
+            <Button className="bg-[#D72638]  text-white px-8">
               Save Changes
             </Button>
           </div>

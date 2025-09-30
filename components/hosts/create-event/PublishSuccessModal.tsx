@@ -59,7 +59,7 @@ export function PublishSuccessModal({ isOpen, onClose, eventTitle, eventId }: Pu
         <div className="space-y-3">
           <Button
             onClick={handleViewMyEvents}
-            className="w-full bg-[#D72638] hover:bg-[#B91E2F] text-white py-3 text-base font-semibold"
+            className="w-full bg-[#D72638]  text-white py-3 text-base font-semibold"
           >
             <Calendar className="w-4 h-4 mr-2" />
             View My Events

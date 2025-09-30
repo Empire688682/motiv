@@ -156,7 +156,7 @@ export default function HostEventsPage() {
             </Button>
           )}
           <Button 
-            className="bg-black hover:bg-gray-800 text-white w-full sm:w-auto touch-manipulation"
+            className=" bg-black text-white w-full sm:w-auto touch-manipulation"
             onClick={() => router.push('/hosts/create-event')}
           >
             <Plus className="w-4 h-4 mr-2" />

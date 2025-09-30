@@ -399,7 +399,7 @@ export function Header() {
                   setIsAuthModalOpen(true);
                   setIsMenuOpen(false);
                 }}
-                className="flex items-center space-x-3 p-3 bg-[#D72638] hover:bg-[#B91E2F] rounded-lg transition-colors mb-4"
+                className="flex items-center space-x-3 p-3 bg-[#D72638]  rounded-lg transition-colors mb-4"
               >
                 <LogIn className="w-4 h-4 text-white" />
                 <span className="text-white font-medium text-sm">Sign In</span>

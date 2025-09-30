@@ -107,7 +107,7 @@ export default function ResetPasswordPage() {
               </div>
               <Button
                 onClick={() => router.push("/")}
-                className="w-full bg-[#D72638] hover:bg-[#B91E2F] text-white"
+                className="w-full bg-[#D72638]  text-white"
               >
                 Go to Login
               </Button>
@@ -180,7 +180,7 @@ export default function ResetPasswordPage() {
               <Button
                 type="submit"
                 disabled={isLoading || !token}
-                className="w-full bg-[#D72638] hover:bg-[#B91E2F] text-white py-3"
+                className="w-full bg-[#D72638]  text-white py-3"
               >
                 {isLoading ? (
                   <>

@@ -222,7 +222,7 @@ export function EditStep({ formData, onUpdate, onNext, onSaveDraft, isSaving = f
           
           <Button
             type="submit"
-            className="bg-[#D72638] hover:bg-[#B91E2F] text-white px-8 py-2 ml-auto"
+            className="bg-[#D72638]  text-white px-8 py-2 ml-auto"
           >
             Save & Continue
           </Button>

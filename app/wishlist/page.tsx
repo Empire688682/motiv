@@ -217,7 +217,7 @@ export default function WishlistPage() {
               </p>
               {!searchQuery && (
                 <Link href="/">
-                  <Button className="bg-[#D72638] hover:bg-[#B91E2F] text-white">
+                  <Button className="bg-[#D72638]  text-white">
                     Discover Events
                   </Button>
                 </Link>

@@ -238,7 +238,7 @@ export function AccountInfoForm() {
       <Button 
         onClick={handleSubmit}
         disabled={isUpdatingProfile}
-        className="bg-[#D72638] hover:bg-[#B91E2F] text-white disabled:opacity-50"
+        className="bg-[#D72638]  text-white disabled:opacity-50"
       >
         {isUpdatingProfile ? (
           <>

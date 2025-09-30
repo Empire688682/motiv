@@ -281,7 +281,7 @@ export function TicketingStep({
             
             <Button
               type="submit"
-              className="bg-[#D72638] hover:bg-[#B91E2F] text-white px-8"
+              className="bg-[#D72638]  text-white px-8"
             >
               Save & Continue
             </Button>
