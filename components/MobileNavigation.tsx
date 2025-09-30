@@ -16,12 +16,16 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { UserProfileModal } from "./auth/UserProfileModal";
+import { SearchModal } from "./modals/SearchModal";
+import { useAuth } from "@/contexts/AuthContext";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
+  SheetOverlay,
 } from "@/components/ui/sheet";
 
 const navigationItems = [
@@ -36,8 +40,8 @@ const navigationItems = [
     icon: Heart,
   },
   {
-    name: "My Raves",
-    href: "/my-raves",
+    name: "My Events",
+    href: "/my-events",
     icon: Calendar,
   },
 ];
@@ -58,6 +62,9 @@ const menuItems = [
 export function MobileNavigation() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  const { user, logout, updateProfile } = useAuth();
 
   // Don't show mobile nav on host pages
   if (pathname.startsWith("/hosts")) {
@@ -92,6 +99,7 @@ export function MobileNavigation() {
 
           {/* Menu Button */}
           <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+            <SheetOverlay className="z-[65]" />
             <SheetTrigger asChild>
               <button className="flex flex-col items-center justify-center space-y-1 text-gray-400 hover:text-gray-300 transition-colors touch-manipulation">
                 <Menu className="w-5 h-5" />
@@ -100,64 +108,37 @@ export function MobileNavigation() {
             </SheetTrigger>
             <SheetContent
               side="bottom"
-              className="h-[80vh] rounded-t-2xl bg-[#1a1a1a] border-gray-700 [&>button]:text-white [&>button]:hover:text-gray-300"
+              className="h-auto max-h-[50vh] rounded-t-2xl bg-[#1a1a1a] border-gray-700 [&>button]:text-white [&>button]:hover:text-gray-300 z-[70] flex flex-col"
             >
-              <SheetHeader className="text-left mb-6">
+              <SheetHeader className="text-left mb-6 flex-shrink-0">
                 <SheetTitle className="text-xl font-bold text-white">
                   Menu
                 </SheetTitle>
               </SheetHeader>
 
-              <div className="space-y-1">
-                {menuItems.map((item) => {
-                  const Icon = item.icon;
-                  const isActive =
-                    pathname === item.href ||
-                    (item.href !== "/" && pathname.startsWith(item.href));
-
-                  return (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      onClick={() => setIsMenuOpen(false)}
-                      className={cn(
-                        "flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors touch-manipulation",
-                        isActive
-                          ? "bg-white/10 text-white"
-                          : "text-gray-300 hover:bg-gray-800"
-                      )}
-                    >
-                      <Icon className="w-5 h-5" />
-                      <span className="font-medium">{item.name}</span>
-                    </Link>
-                  );
-                })}
-
-                {/* Divider */}
-                <div className="border-t border-gray-700 my-4"></div>
-
-                {/* Additional Menu Items */}
-                <Link
-                  href="/help"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-gray-800 transition-colors touch-manipulation"
+              <div className="space-y-1 flex-1 overflow-y-auto pb-6">
+                <button
+                  onClick={() => {
+                    setIsProfileModalOpen(true);
+                    setIsMenuOpen(false);
+                  }}
+                  className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-gray-800 transition-colors touch-manipulation"
                 >
-                  <div className="w-5 h-5 flex items-center justify-center">
-                    <span className="text-sm font-bold">?</span>
-                  </div>
-                  <span className="font-medium">Help & Support</span>
-                </Link>
-
-                <Link
-                  href="/about"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-gray-800 transition-colors touch-manipulation"
+                  <User className="w-5 h-5" />
+                  <span className="font-medium">Profile</span>
+                </button>
+                <button
+                  onClick={() => {
+                    setIsSearchModalOpen(true);
+                    setIsMenuOpen(false);
+                  }}
+                  className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-gray-800 transition-colors touch-manipulation"
                 >
-                  <div className="w-5 h-5 flex items-center justify-center">
-                    <span className="text-sm font-bold">i</span>
-                  </div>
-                  <span className="font-medium">About MOTIV</span>
-                </Link>
+                  <Search className="w-5 h-5" />
+                  <span className="font-medium">Search</span>
+                </button>
+
+
 
                 {/* Host Mode Toggle */}
                 <div className="border-t border-gray-700 my-4"></div>
@@ -186,6 +167,21 @@ export function MobileNavigation() {
 
       {/* Spacer for mobile navigation */}
       <div className="sm:hidden h-16"></div>
+
+      <SearchModal
+        isOpen={isSearchModalOpen}
+        onClose={() => setIsSearchModalOpen(false)}
+      />
+
+      {user && (
+        <UserProfileModal
+          isOpen={isProfileModalOpen}
+          onClose={() => setIsProfileModalOpen(false)}
+          user={user}
+          onLogout={logout}
+          onUpdateProfile={updateProfile}
+        />
+      )}
     </>
   );
 }

@@ -61,7 +61,7 @@ export default function AddReviewModal({
 
         {/* Title */}
         <h2 className="text-white text-xl font-semibold text-center mb-6">
-          Review Rave
+          Review Event
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -110,7 +110,7 @@ export default function AddReviewModal({
             disabled={rating === 0}
             className="w-full bg-red-600 hover:bg-red-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-medium py-3 rounded-lg transition-colors"
           >
-            Review Rave
+            Review Event
           </button>
         </form>
       </div>

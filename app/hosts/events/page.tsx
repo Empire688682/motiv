@@ -32,11 +32,11 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 
-export default function HostRavesPage() {
+export default function HostEventsPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
-  const [raveToDelete, setRaveToDelete] = useState<string | null>(null);
+  const [eventToDelete, setEventToDelete] = useState<string | null>(null);
   const router = useRouter();
 
   // Fetch events data
@@ -49,28 +49,28 @@ export default function HostRavesPage() {
   
 
 
-  const handleEdit = (raveId: string) => {
-    router.push(`/hosts/raves/edit/${raveId}`);
+  const handleEdit = (eventId: string) => {
+    router.push(`/hosts/events/edit/${eventId}`);
   };
 
-  const handleDeleteClick = (raveId: string) => {
-    setRaveToDelete(raveId);
+  const handleDeleteClick = (eventId: string) => {
+    setEventToDelete(eventId);
     setDeleteDialogOpen(true);
   };
 
   const handleDeleteConfirm = async () => {
-    if (raveToDelete) {
+    if (eventToDelete) {
       try {
-        await deleteEvent(raveToDelete);
+        await deleteEvent(eventToDelete);
         setDeleteDialogOpen(false);
-        setRaveToDelete(null);
+        setEventToDelete(null);
       } catch (error) {
         console.error("Failed to delete event:", error);
       }
     }
   };
 
-  const handleExportRaves = () => {
+  const handleExportEvents = () => {
     try {
       const exportData = formatDataForCSV(filteredEvents, {
         'Event Name': 'title',
@@ -86,16 +86,16 @@ export default function HostRavesPage() {
       });
 
       exportToCSV({
-        filename: `my-raves-${new Date().toISOString().split('T')[0]}`,
+        filename: `my-events-${new Date().toISOString().split('T')[0]}`,
         headers: ['Event Name', 'Date', 'Time', 'Location', 'Status', 'Ticket Price', 'Max Attendees', 'Current Attendees', 'Description', 'Created At'],
         data: exportData,
         dateFields: ['Date', 'Created At']
       });
 
-      toast.success('Raves exported successfully');
+      toast.success('Events exported successfully');
     } catch (error) {
       console.error('Export failed:', error);
-      toast.error('Failed to export raves');
+      toast.error('Failed to export events');
     }
   };
 
@@ -127,11 +127,11 @@ export default function HostRavesPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">My Raves</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">My Events</h1>
         </div>
         <div className="flex flex-col sm:flex-row gap-2">
           <Button 
-            onClick={handleExportRaves}
+            onClick={handleExportEvents}
             variant="outline"
             className="w-full sm:w-auto touch-manipulation"
           >
@@ -160,7 +160,7 @@ export default function HostRavesPage() {
             onClick={() => router.push('/hosts/create-event')}
           >
             <Plus className="w-4 h-4 mr-2" />
-            Create Rave
+            Create Event
           </Button>
         </div>
       </div>
@@ -194,7 +194,7 @@ export default function HostRavesPage() {
         </div>
       </div>
 
-      {/* Raves Table */}
+      {/* Events Table */}
       <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
         {isLoading ? (
           <div className="flex justify-center items-center py-12">
@@ -306,9 +306,9 @@ export default function HostRavesPage() {
       <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Delete Rave</AlertDialogTitle>
+            <AlertDialogTitle>Delete Event</AlertDialogTitle>
             <AlertDialogDescription>
-              Are you sure you want to delete this rave? This action cannot be undone.
+              Are you sure you want to delete this event? This action cannot be undone.
               All associated data including tickets and attendees will be permanently removed.
             </AlertDialogDescription>
           </AlertDialogHeader>

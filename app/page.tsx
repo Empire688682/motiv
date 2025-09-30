@@ -3,7 +3,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { EventsSection } from "@/components/EventsSection";
 import { FilterButtons } from "@/components/FilterButtons";
 import { AboutSection } from "@/components/AboutSection";
-import { CreateRaveSection } from "@/components/CreateRaveSection";
+import { CreateEventSection } from "@/components/CreateEventSection";
 import { FAQCard } from "@/components/FAQCard";
 import { NewsletterSubscription } from "@/components/NewsletterSubscription";
 import { Footer } from "@/components/Footer";
@@ -20,7 +20,7 @@ const faqData = [
       "No sign up required. You can explore and book events directly without creating an account.",
   },
   {
-    question: "Where are these raves happening?",
+    question: "Where are these events happening?",
     answer:
       "Everywhere in Lagos, from Island rooftops to underground Mainland events. Use filters to find your vibe.",
   },
@@ -43,12 +43,12 @@ export default function HomePage() {
         <Header />
         <HeroSection />
 
-        {/* Popular Raves Section */}
+        {/* Popular Events Section */}
         <ScrollAnimation>
-          <section className="px-4 md:px-6 py-8">
+          <section id="events-section" className="px-4 md:px-6 py-8">
             <div className="max-w-7xl mx-auto">
               <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                Raves in Lagos
+                Events in Lagos
               </h2>
 
               <FilterButtons />
@@ -64,7 +64,7 @@ export default function HomePage() {
       </ScrollAnimation>
 
       <ScrollAnimation delay={300}>
-        <CreateRaveSection />
+        <CreateEventSection />
       </ScrollAnimation>
 
       {/* FAQ Section */}

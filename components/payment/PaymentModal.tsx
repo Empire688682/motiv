@@ -176,9 +176,9 @@ export function PaymentModal({
     setAttendees([]);
     setCurrentAttendeeIndex(0);
 
-    // Redirect to My Raves page after a short delay
+    // Redirect to My Events page after a short delay
     setTimeout(() => {
-      window.location.href = "/my-raves";
+      window.location.href = "/my-events";
     }, 2000);
   };
 
@@ -202,7 +202,7 @@ export function PaymentModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={handleModalClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+    <DialogContent className="w-full max-w-md md:max-w-4xl max-h-[95vh] md:max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold">
             {step === "details"
@@ -236,7 +236,7 @@ export function PaymentModal({
           )}
         </DialogHeader>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Event Summary */}
           <Card>
             <CardHeader>
@@ -387,9 +387,9 @@ export function PaymentModal({
                       {currentAttendeeIndex > 0 && (
                         <Button
                           type="button"
-                          variant="outline"
+                          variant="secondary"
                           onClick={goToPreviousAttendee}
-                          className="flex-1"
+                          className="flex-1 bg-gray-700 text-white hover:bg-gray-600"
                         >
                           Previous
                         </Button>
@@ -397,9 +397,9 @@ export function PaymentModal({
 
                       <Button
                         type="button"
-                        variant="outline"
+                        variant="secondary"
                         onClick={handleModalClose}
-                        className="flex-1"
+                        className="flex-1 bg-gray-700 text-white hover:bg-gray-600"
                       >
                         Cancel
                       </Button>
@@ -409,9 +409,9 @@ export function PaymentModal({
                         attendees.length > 0 && (
                           <Button
                             type="button"
-                            variant="outline"
+                            variant="secondary"
                             onClick={skipToPayment}
-                            className="flex-1"
+                            className="flex-1 bg-gray-700 text-white hover:bg-gray-600"
                           >
                             Use Same Details for All
                           </Button>
@@ -419,7 +419,7 @@ export function PaymentModal({
 
                       <Button
                         type="submit"
-                        className="flex-1 bg-[#D72638] hover:bg-[#B91E2F]"
+                        className="flex-1 bg-[#D72638] text-white"
                       >
                         {currentAttendeeIndex + 1 < totalTickets
                           ? `Next Attendee (${
@@ -493,7 +493,7 @@ export function PaymentModal({
                         type="button"
                         variant="outline"
                         onClick={() => setStep("details")}
-                        className="w-full"
+                        className="w-full border-gray-600 text-gray-800 bg-white hover:bg-gray-50"
                       >
                         Back to Attendee Details
                       </Button>

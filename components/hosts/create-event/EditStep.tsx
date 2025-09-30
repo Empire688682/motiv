@@ -24,7 +24,7 @@ export function EditStep({ formData, onUpdate, onNext, onSaveDraft, isSaving = f
     
     // Validate required fields
     if (!formData.title.trim()) {
-      alert("Please enter a rave title");
+      alert("Please enter a event title");
       return;
     }
     
@@ -49,7 +49,7 @@ export function EditStep({ formData, onUpdate, onNext, onSaveDraft, isSaving = f
     }
     
     if (!formData.description.trim()) {
-      alert("Please enter a rave description");
+      alert("Please enter a event description");
       return;
     }
     
@@ -66,19 +66,19 @@ export function EditStep({ formData, onUpdate, onNext, onSaveDraft, isSaving = f
           </Button>
         </Link>
         <h1 className="text-2xl font-bold text-gray-900">
-          {isEdit ? "Edit Rave Details" : "Create a New Rave"}
+          {isEdit ? "Edit Event Details" : "Create a New Event"}
         </h1>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-8">
-        {/* Rave Details */}
+        {/* Event Details */}
         <div>
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Rave Details</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Event Details</h2>
           
           <div className="space-y-4">
             <div>
               <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
-                Rave Title *
+                Event Title *
               </label>
               <Input
                 id="title"
@@ -100,11 +100,11 @@ export function EditStep({ formData, onUpdate, onNext, onSaveDraft, isSaving = f
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Rave Type *
+                Event Type *
               </label>
               <div className="flex items-center space-x-2">
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                  ● Single Rave
+                  ● Single Event
                 </span>
               </div>
             </div>
@@ -160,7 +160,7 @@ export function EditStep({ formData, onUpdate, onNext, onSaveDraft, isSaving = f
           
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Where will your rave take place? *
+              Where will your event take place? *
             </label>
             <LocationPicker
               value={formData.location || undefined}
@@ -176,14 +176,14 @@ export function EditStep({ formData, onUpdate, onNext, onSaveDraft, isSaving = f
           <div className="space-y-6">
             <div>
               <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
-                Rave Description *
+                Event Description *
               </label>
               <Textarea
                 id="description"
                 required
                 value={formData.description}
                 onChange={(e) => onUpdate({ description: e.target.value })}
-                placeholder="Describe what's special about your rave & what ravers should expect"
+                placeholder="Describe what's special about your event & what attendees should expect"
                 rows={4}
                 className="w-full resize-none"
               />

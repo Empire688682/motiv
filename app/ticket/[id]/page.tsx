@@ -139,12 +139,12 @@ export default function TicketPage() {
         setTicket(transformedTicket);
       } else {
         toast.error("Ticket not found");
-        router.push("/my-raves");
+        router.push("/my-events");
       }
     } catch (error: any) {
       console.error("Error fetching ticket:", error);
       toast.error("Failed to load ticket");
-      router.push("/my-raves");
+      router.push("/my-events");
     } finally {
       setLoading(false);
     }
@@ -223,10 +223,10 @@ export default function TicketPage() {
                 The ticket you're looking for doesn't exist or you don't have access to it.
               </p>
               <Button
-                onClick={() => router.push("/my-raves")}
+                onClick={() => router.push("/my-events")}
                 className="bg-[#D72638] hover:bg-[#B91E2F]"
               >
-                Back to My Raves
+                Back to My Events
               </Button>
             </CardContent>
           </Card>
@@ -246,12 +246,12 @@ export default function TicketPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Back Button */}
           <Button
-            onClick={() => router.push("/my-raves")}
+            onClick={() => router.push("/my-events")}
             variant="ghost"
             className="mb-6 text-gray-400 hover:text-black"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to My Raves
+            Back to My Events
           </Button>
 
           {/* Ticket Card */}

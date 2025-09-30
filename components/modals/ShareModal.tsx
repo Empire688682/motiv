@@ -21,7 +21,7 @@ interface ShareModalProps {
 export function ShareModal({ 
   isOpen, 
   onClose, 
-  shareUrl = "https://motiv.com/event/sample-event", 
+  shareUrl = "https://motiv.ng", 
   title = "Check out this amazing event!" 
 }: ShareModalProps) {
   const [copied, setCopied] = useState(false);

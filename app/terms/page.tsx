@@ -101,7 +101,7 @@ export default function TermsPage() {
                 <h2 className="text-2xl font-semibold text-white mb-4">9. Contact Information</h2>
                 <p className="text-gray-300 leading-relaxed">
                   If you have any questions about these Terms and Conditions, please contact us through our contact form or 
-                  email us at support@motiv.com.
+                  email us at support@motiv.ng.
                 </p>
               </section>
             </div>

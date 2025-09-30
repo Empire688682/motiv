@@ -221,7 +221,7 @@ export function BannerStep({
             onClick={onBack}
             className="px-6"
           >
-            Go back to Edit Rave
+            Go back to Edit Event
           </Button>
           
           <div className="flex gap-3">

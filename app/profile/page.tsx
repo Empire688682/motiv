@@ -28,7 +28,7 @@ const userData = {
   phone: "+234 801 234 5678",
   location: "Lagos, Nigeria",
   joinDate: "March 2024",
-  bio: "Music lover and party enthusiast. Always looking for the next great rave experience!",
+  bio: "Music lover and party enthusiast. Always looking for the next great event experience!",
   avatar: "/api/placeholder/150/150",
   stats: {
     eventsAttended: 12,

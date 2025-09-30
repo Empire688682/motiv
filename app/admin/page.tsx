@@ -53,10 +53,10 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 p-4 md:p-8">
       {/* Overview Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card className="bg-[#1a1a1a] border-gray-800">
+        <Card className="bg-black border-gray-800">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-gray-300">Total Users</CardTitle>
             <Users className="h-4 w-4 text-[#D72638]" />
@@ -69,7 +69,7 @@ export default function AdminDashboard() {
           </CardContent>
         </Card>
 
-        <Card className="bg-[#1a1a1a] border-gray-800">
+  <Card className="bg-black border-gray-800">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-gray-300">Total Events</CardTitle>
             <Calendar className="h-4 w-4 text-blue-500" />
@@ -82,7 +82,7 @@ export default function AdminDashboard() {
           </CardContent>
         </Card>
 
-        <Card className="bg-[#1a1a1a] border-gray-800">
+  <Card className="bg-black border-gray-800">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-gray-300">Total Tickets</CardTitle>
             <CreditCard className="h-4 w-4 text-green-500" />
@@ -95,7 +95,7 @@ export default function AdminDashboard() {
           </CardContent>
         </Card>
 
-        <Card className="bg-[#1a1a1a] border-gray-800">
+  <Card className="bg-black border-gray-800">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-gray-300">Newsletter Subscribers</CardTitle>
             <Mail className="h-4 w-4 text-purple-500" />
@@ -111,7 +111,7 @@ export default function AdminDashboard() {
 
       {/* User Breakdown */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="bg-[#1a1a1a] border-gray-800">
+  <Card className="bg-black border-gray-800">
           <CardHeader>
             <CardTitle className="text-lg font-semibold text-white">User Distribution</CardTitle>
           </CardHeader>
@@ -159,7 +159,7 @@ export default function AdminDashboard() {
           </CardContent>
         </Card>
 
-        <Card className="bg-[#1a1a1a] border-gray-800">
+  <Card className="bg-black border-gray-800">
           <CardHeader>
             <CardTitle className="text-lg font-semibold text-white">Platform Metrics</CardTitle>
           </CardHeader>
@@ -206,7 +206,7 @@ export default function AdminDashboard() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <a
               href="/admin/users"
-              className="flex items-center gap-3 p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors"
+              className="flex items-center gap-3 p-4 bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors"
             >
               <Users className="h-5 w-5 text-[#D72638]" />
               <div>
@@ -217,7 +217,7 @@ export default function AdminDashboard() {
             
             <a
               href="/admin/transactions"
-              className="flex items-center gap-3 p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors"
+              className="flex items-center gap-3 p-4 bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors"
             >
               <CreditCard className="h-5 w-5 text-green-500" />
               <div>
@@ -228,7 +228,7 @@ export default function AdminDashboard() {
             
             <button
               onClick={fetchStats}
-              className="flex items-center gap-3 p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors"
+              className="flex items-center gap-3 p-4 bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors"
             >
               <Activity className="h-5 w-5 text-blue-500" />
               <div>

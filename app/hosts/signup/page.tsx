@@ -29,7 +29,7 @@ export default function SignUpPage() {
           Host unforgettable nights.
         </h1>
         <p className="text-sm sm:text-base text-gray-300">
-          Sign up to start creating and promoting your own rave events.
+          Sign up to start creating and promoting your own events.
         </p>
       </div>
 
@@ -46,7 +46,7 @@ export default function SignUpPage() {
             Host unforgettable nights.
           </h1>
           <p className="text-lg xl:text-xl text-gray-300 leading-relaxed">
-            Sign up to start creating and promoting your own rave events.
+            Sign up to start creating and promoting your own events.
           </p>
         </div>
       </div>

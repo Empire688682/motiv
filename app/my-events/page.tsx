@@ -49,7 +49,7 @@ interface TicketData {
   quantity: number;
 }
 
-export default function MyRavesPage() {
+export default function MyEventsPage() {
   const { user, isAuthenticated, isLoading: authLoading } = useAuth();
   const [tickets, setTickets] = useState<TicketData[]>([]);
   const [loading, setLoading] = useState(true);
@@ -214,7 +214,7 @@ export default function MyRavesPage() {
         <div className="flex items-center justify-center py-20">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#D72638] mx-auto mb-4"></div>
-            <p className="text-gray-400">Loading your raves...</p>
+            <p className="text-gray-400">Loading your events...</p>
           </div>
         </div>
         <Footer />
@@ -305,7 +305,7 @@ export default function MyRavesPage() {
           {/* Header */}
           <div className="mb-6 sm:mb-8">
             <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-              My Raves
+              My Events
             </h1>
             <p className="text-sm sm:text-base text-gray-400">
               Manage your event tickets and experiences
@@ -315,7 +315,7 @@ export default function MyRavesPage() {
           {/* Stats Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
             <Card className="bg-[#1a1a1a] border-gray-800">
-              <CardContent className="p-4 sm:p-6">
+              <CardContent className="p-5 sm:p-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-xs sm:text-sm font-medium text-gray-400">
@@ -331,7 +331,7 @@ export default function MyRavesPage() {
             </Card>
 
             <Card className="bg-[#1a1a1a] border-gray-800">
-              <CardContent className="p-4 sm:p-6">
+              <CardContent className="p-5 sm:p-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-xs sm:text-sm font-medium text-gray-400">
@@ -347,7 +347,7 @@ export default function MyRavesPage() {
             </Card>
 
             <Card className="bg-[#1a1a1a] border-gray-800">
-              <CardContent className="p-4 sm:p-6">
+              <CardContent className="p-5 sm:p-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-xs sm:text-sm font-medium text-gray-400">

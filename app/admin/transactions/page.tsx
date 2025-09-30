@@ -11,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ChevronLeft, ChevronRight, CreditCard, DollarSign } from "lucide-react";
+import { ChevronLeft, ChevronRight, CreditCard, Wallet } from "lucide-react";
 import { apiClient } from "@/lib/api/client";
 import { toast } from "sonner";
 import { format } from "date-fns";
@@ -99,7 +99,7 @@ export default function AdminTransactionsPage() {
       case "paystack":
         return <CreditCard className="h-4 w-4" />;
       default:
-        return <DollarSign className="h-4 w-4" />;
+        return <Wallet className="h-4 w-4" />;
     }
   };
 
@@ -108,7 +108,7 @@ export default function AdminTransactionsPage() {
   }, 0);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-4 md:p-8 bg-black min-h-screen">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
@@ -122,7 +122,7 @@ export default function AdminTransactionsPage() {
 
       {/* Summary Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card className="bg-[#1a1a1a] border-gray-800">
+        <Card className="bg-black border-gray-800">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -131,12 +131,12 @@ export default function AdminTransactionsPage() {
                   ₦{totalAmount.toLocaleString()}
                 </p>
               </div>
-              <DollarSign className="h-8 w-8 text-green-500" />
+              <Wallet className="h-8 w-8 text-green-500" />
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-[#1a1a1a] border-gray-800">
+        <Card className="bg-black border-gray-800">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -152,7 +152,7 @@ export default function AdminTransactionsPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-[#1a1a1a] border-gray-800">
+        <Card className="bg-black border-gray-800">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -170,11 +170,11 @@ export default function AdminTransactionsPage() {
       </div>
 
       {/* Filters */}
-      <Card className="bg-[#1a1a1a] border-gray-800">
+      <Card className="bg-black border-gray-800">
         <CardContent className="p-6">
           <div className="flex flex-col sm:flex-row gap-4">
             <Select value={statusFilter || "all"} onValueChange={handleStatusFilter}>
-              <SelectTrigger className="w-full sm:w-48 bg-gray-800 border-gray-600 text-white">
+                <SelectTrigger className="w-full sm:w-48 bg-gray-900 border-gray-600 text-white">
                 <SelectValue placeholder="Filter by status" />
               </SelectTrigger>
               <SelectContent>
@@ -208,7 +208,7 @@ export default function AdminTransactionsPage() {
               {transactions.map((transaction) => (
                 <div
                   key={transaction.id}
-                  className="flex items-center justify-between p-4 bg-gray-800 rounded-lg"
+                  className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 sm:p-4 bg-gray-900 rounded-lg"
                 >
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center">
@@ -227,7 +227,7 @@ export default function AdminTransactionsPage() {
                     </div>
                   </div>
                   
-                  <div className="text-right">
+                  <div className="text-left sm:text-right mt-2 sm:mt-0">
                     <div className="font-semibold text-white">
                       ₦{transaction.amount.toLocaleString()}
                     </div>

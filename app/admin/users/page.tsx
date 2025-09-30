@@ -147,7 +147,7 @@ export default function AdminUsersPage() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-4 md:p-8 bg-black min-h-screen">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
@@ -160,22 +160,22 @@ export default function AdminUsersPage() {
       </div>
 
       {/* Filters */}
-      <Card className="bg-[#1a1a1a] border-gray-800">
+      <Card className="bg-black border-gray-800">
         <CardContent className="p-6">
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1">
-              <div className="relative">
+              <div className="relative py-2">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                 <Input
                   placeholder="Search users by name, email, or username..."
                   value={search}
                   onChange={(e) => handleSearch(e.target.value)}
-                  className="pl-10 bg-gray-800 border-gray-600 text-white"
+                  className="pl-10 bg-gray-900 border-gray-600 text-white"
                 />
               </div>
             </div>
             <Select value={roleFilter || "all"} onValueChange={handleRoleFilter}>
-              <SelectTrigger className="w-full sm:w-48 bg-gray-800 border-gray-600 text-white">
+                <SelectTrigger className="w-full sm:w-48 bg-gray-900 border-gray-600 text-white">
                 <SelectValue placeholder="Filter by role" />
               </SelectTrigger>
               <SelectContent>
@@ -191,7 +191,7 @@ export default function AdminUsersPage() {
       </Card>
 
       {/* Users Table */}
-      <Card className="bg-[#1a1a1a] border-gray-800">
+  <Card className="bg-black border-gray-800">
         <CardHeader>
           <CardTitle className="text-white">Users</CardTitle>
         </CardHeader>
@@ -209,7 +209,7 @@ export default function AdminUsersPage() {
               {users.map((user) => (
                 <div
                   key={user.id}
-                  className="flex items-center justify-between p-4 bg-gray-800 rounded-lg"
+                    className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 sm:p-4 bg-gray-900 rounded-lg"
                 >
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 bg-[#D72638] rounded-full flex items-center justify-center text-white font-semibold">
@@ -222,7 +222,7 @@ export default function AdminUsersPage() {
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2 sm:gap-4 mt-2 sm:mt-0">
                     <div className="text-right">
                       <Badge className={`${getRoleBadgeColor(user.role)} text-white`}>
                         {user.role}
@@ -242,10 +242,10 @@ export default function AdminUsersPage() {
                     </div>
                     
                     <Button
-                      variant="outline"
+                      variant="ghost"
                       size="sm"
                       onClick={() => fetchUserDetails(user.id)}
-                      className="border-gray-600 text-gray-400 bg-transparent hover:bg-transparent hover:text-[#D72638]"
+                      className="bg-red-600 text-white hover:bg-red-700"
                     >
                       <Eye className="h-4 w-4" />
                     </Button>
@@ -291,7 +291,7 @@ export default function AdminUsersPage() {
 
       {/* User Details Modal */}
       <Dialog open={showUserModal} onOpenChange={setShowUserModal}>
-        <DialogContent className="max-w-2xl bg-[#1a1a1a] border-gray-800 text-white">
+        <DialogContent className="w-full max-w-md md:max-w-2xl max-h-[95vh] md:max-h-[90vh] overflow-y-auto bg-[#1a1a1a] border-gray-800 text-white">
           <DialogHeader>
             <DialogTitle>User Details</DialogTitle>
           </DialogHeader>
@@ -320,7 +320,7 @@ export default function AdminUsersPage() {
                       onValueChange={(value) => updateUserRole(selectedUser.id, value)}
                       disabled={updatingRole}
                     >
-                      <SelectTrigger className="w-32 bg-gray-800 border-gray-600">
+                      <SelectTrigger className="w-32 bg-gray-900 border-gray-600">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -339,15 +339,15 @@ export default function AdminUsersPage() {
 
               {/* Stats */}
               <div className="grid grid-cols-3 gap-4">
-                <div className="text-center p-4 bg-gray-800 rounded-lg">
+                <div className="text-center p-4 bg-gray-900 rounded-lg">
                   <div className="text-2xl font-bold text-white">{selectedUser.tickets.length}</div>
                   <div className="text-sm text-gray-400">Tickets</div>
                 </div>
-                <div className="text-center p-4 bg-gray-800 rounded-lg">
+                <div className="text-center p-4 bg-gray-900 rounded-lg">
                   <div className="text-2xl font-bold text-white">{selectedUser.events.length}</div>
                   <div className="text-sm text-gray-400">Events</div>
                 </div>
-                <div className="text-center p-4 bg-gray-800 rounded-lg">
+                <div className="text-center p-4 bg-gray-900 rounded-lg">
                   <div className="text-2xl font-bold text-white">
                     {selectedUser.newsletter_subscribed ? "✓" : "✗"}
                   </div>

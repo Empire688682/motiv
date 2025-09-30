@@ -44,23 +44,28 @@ class ApiClient {
           const { status, data } = error.response;
 
           if (status === 401) {
-            // Unauthorized - clear token
-            this.clearToken();
-            apiError.message = "Authentication required";
+            // For 401 errors, use the specific server message if available
+            // This allows specific auth error messages to come through
+            apiError.message = (data as any)?.error || (data as any)?.message || "Authentication required";
             apiError.code = "UNAUTHORIZED";
+            
+            // Only clear token if it's a generic auth failure, not specific login errors
+            if (!((data as any)?.error || (data as any)?.message)) {
+              this.clearToken();
+            }
           } else if (status === 403) {
-            apiError.message = "Access forbidden";
+            apiError.message = (data as any)?.error || (data as any)?.message || "Access forbidden";
             apiError.code = "FORBIDDEN";
           } else if (status === 404) {
-            apiError.message = "Resource not found";
+            apiError.message = (data as any)?.error || (data as any)?.message || "Resource not found";
             apiError.code = "NOT_FOUND";
           } else if (status >= 500) {
-            apiError.message = "Server error. Please try again later.";
+            apiError.message = (data as any)?.error || (data as any)?.message || "Server error. Please try again later.";
             apiError.code = "SERVER_ERROR";
           } else {
-            // Use server error message if available
+            // Use server error message if available (prioritize 'error' field over 'message')
             apiError.message =
-              (data as any)?.message || `Request failed with status ${status}`;
+              (data as any)?.error || (data as any)?.message || `Request failed with status ${status}`;
             apiError.code = (data as any)?.code || "REQUEST_FAILED";
           }
 

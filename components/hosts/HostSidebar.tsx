@@ -29,8 +29,8 @@ const sidebarItems = [
     icon: LayoutDashboard,
   },
   {
-    title: "My Raves",
-    href: "/hosts/raves",
+    title: "My Events",
+    href: "/hosts/events",
     icon: Calendar,
   },
   {

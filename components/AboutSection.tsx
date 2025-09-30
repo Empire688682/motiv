@@ -12,7 +12,7 @@ export function AboutSection() {
         <div className="grid lg:grid-cols-[400px_1fr] gap-16 items-center">
           <div className="relative group">
             <Image
-              src="https://res.cloudinary.com/dkuphcizs/image/upload/v1753716187/kyle-kioko-lFlkYTrTriM-unsplash_j0ejvh.png"
+              src="https://res.cloudinary.com/dicg57iox/image/upload/v1758363125/mad-knoxx-deluxe-jD5aj2a1dL0-unsplash_wrelqz.png"
               alt="Atmospheric nightlife scene"
               width={400}
               height={400}
@@ -27,11 +27,11 @@ export function AboutSection() {
             <div className="space-y-5 text-gray-300 text-base leading-relaxed">
               <p className="relative pl-4">
                 <span className="absolute left-0 top-2 w-2 h-2 bg-[#D72638] rounded-full"></span>
-                MOTIV is building the future of nightlife in Lagos.
+                MOTIV is building the future of events in Lagos.
               </p>
               <p className="relative pl-4">
                 <span className="absolute left-0 top-2 w-2 h-2 bg-[#D72638] rounded-full"></span>
-                We make discovering and attending raves simple, fast and
+                We make discovering and attending events simple, fast and
                 cashless. Whether you're looking for a hidden rooftop party, a
                 packed club or the latest underground scene, MOTIV helps you
                 find the best events without the stress.
@@ -39,7 +39,7 @@ export function AboutSection() {
               <p className="relative pl-4">
                 <span className="absolute left-0 top-2 w-2 h-2 bg-[#D72638] rounded-full"></span>
                 We're here to connect the city's energy with the people who live
-                for it. One rave at a time.
+                for it. One event at a time.
               </p>
             </div>
           </div>

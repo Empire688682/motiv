@@ -101,7 +101,7 @@ export function TicketCard({ ticket }: TicketCardProps) {
 
   return (
     <Card className="overflow-hidden border-2 border-gray-200 hover:border-[#D72638] transition-colors duration-300">
-      <CardHeader className="bg-gradient-to-r from-[#D72638] to-[#B91E2F] text-white p-4 sm:p-6">
+  <CardHeader className="bg-gradient-to-r from-[#D72638] to-[#B91E2F] text-white p-5 sm:p-6">
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 sm:gap-0">
           <div className="flex-1">
             <CardTitle className="text-lg sm:text-xl font-bold mb-2">{ticket.event.title}</CardTitle>
@@ -154,7 +154,7 @@ export function TicketCard({ ticket }: TicketCardProps) {
         </div>
       </CardHeader>
 
-      <CardContent className="p-4 sm:p-6">
+  <CardContent className="p-5 sm:p-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           {/* Ticket Details */}
           <div className="space-y-4">

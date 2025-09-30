@@ -8,7 +8,7 @@ export default function EditEventPage() {
   const eventId = params.id as string;
 
   if (!eventId) {
-    redirect("/hosts/raves");
+    redirect("/hosts/events");
   }
 
   // Redirect to create event page with edit mode

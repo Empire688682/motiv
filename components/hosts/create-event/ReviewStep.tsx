@@ -141,7 +141,7 @@ export function ReviewStep({ formData, onBack, onSave, isLoading = false, isEdit
               {/* Event Title Overlay */}
               <div className="absolute bottom-6 left-6">
                 <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  {formData.title || "Your Rave Title"}
+                  {formData.title || "Your Event Title"}
                 </h1>
               </div>
 
@@ -364,7 +364,7 @@ export function ReviewStep({ formData, onBack, onSave, isLoading = false, isEdit
               {/* Event Description */}
               <div>
                 <h2 className="text-lg sm:text-xl font-semibold text-white mb-4">
-                  Rave Description
+                  Event Description
                 </h2>
                 <div className="text-gray-300 leading-relaxed text-sm sm:text-base">
                   {formData.description ? (
@@ -445,7 +445,7 @@ export function ReviewStep({ formData, onBack, onSave, isLoading = false, isEdit
                   {isEdit ? "Saving..." : "Publishing..."}
                 </>
               ) : (
-                isEdit ? "Save Changes" : "Publish Rave"
+                isEdit ? "Save Changes" : "Publish Event"
               )}
             </Button>
           </div>

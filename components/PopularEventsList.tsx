@@ -6,9 +6,11 @@ import { Button } from "./ui/button";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
+import { SearchModal } from "./modals/SearchModal";
 
 export function PopularEventsList() {
   const [mounted, setMounted] = useState(false);
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const queryClient = useQueryClient();
   const { data: events, isLoading, error, refetch } = usePopularEvents(6);
 
@@ -79,6 +81,10 @@ export function PopularEventsList() {
 
   return (
     <div className="space-y-6">
+      <SearchModal
+        isOpen={isSearchModalOpen}
+        onClose={() => setIsSearchModalOpen(false)}
+      />
       {/* Events Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 bg-red/700">
         {events.map((event, index) => {
@@ -127,12 +133,12 @@ export function PopularEventsList() {
       {/* Show More Button */}
       <div className="text-center">
         <Button
-          onClick={handleShowMore}
+          onClick={() => setIsSearchModalOpen(true)}
           variant="outline"
           size="lg"
           className="border-[#D72638] text-[#D72638] hover:bg-[#D72638] hover:text-white"
         >
-          Show More Raves
+          Find more events
         </Button>
       </div>
     </div>
