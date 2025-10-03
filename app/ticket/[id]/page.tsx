@@ -19,7 +19,9 @@ import {
   Loader2, 
   ArrowLeft,
   Clock,
-  Ticket as TicketIcon
+  Ticket as TicketIcon,
+  Copy,
+  Check
 } from "lucide-react";
 import { format } from "date-fns";
 import QRCode from "qrcode";
@@ -63,6 +65,7 @@ export default function TicketPage() {
   const [loading, setLoading] = useState(true);
   const [qrCodeUrl, setQrCodeUrl] = useState<string>("");
   const [isDownloading, setIsDownloading] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     if (isAuthenticated && user && params.id) {
@@ -168,6 +171,24 @@ export default function TicketPage() {
       toast.error('Failed to download ticket. Please try again.');
     } finally {
       setIsDownloading(false);
+    }
+  };
+
+  const copyQRData = async () => {
+    if (!ticket?.qrData) return;
+    
+    try {
+      await navigator.clipboard.writeText(ticket.qrData);
+      setCopied(true);
+      toast.success('QR code copied to clipboard!');
+      
+      // Reset copied state after 2 seconds
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
+    } catch (error) {
+      console.error('Failed to copy:', error);
+      toast.error('Failed to copy QR code');
     }
   };
 
@@ -314,10 +335,33 @@ export default function TicketPage() {
                       </div>
                       {ticket.qrData && (
                         <div className="py-3 border-b border-gray-700">
-                          <span className="text-gray-400 text-sm block mb-2">QR Code Data:</span>
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-gray-400 text-sm">QR Code Data:</span>
+                            <Button
+                              onClick={copyQRData}
+                              variant="ghost"
+                              size="sm"
+                              className="h-8 px-2 text-xs hover:bg-gray-700"
+                            >
+                              {copied ? (
+                                <>
+                                  <Check className="w-3 h-3 mr-1" />
+                                  Copied
+                                </>
+                              ) : (
+                                <>
+                                  <Copy className="w-3 h-3 mr-1" />
+                                  Copy
+                                </>
+                              )}
+                            </Button>
+                          </div>
                           <div className="text-sm text-gray-300 bg-gray-800 p-3 rounded-lg font-mono break-all">
                             {ticket.qrData}
                           </div>
+                          <p className="text-xs text-gray-500 mt-2">
+                            💡 <strong>Note:</strong> Copy the entire code including the "MOTIV-" prefix. This code can be used for manual entry at the event if QR scanning is unavailable.
+                          </p>
                         </div>
                       )}
                       {ticket.event.manual_description && (

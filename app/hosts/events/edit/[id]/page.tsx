@@ -158,6 +158,13 @@ export default function EditEventPage() {
 
         console.log("Final parsed times:", { startDate, startTime, endTime });
 
+        // Get free event capacity from the first ticket type if it's a free event
+        let freeEventCapacity = undefined;
+        if (!hasTicketTypes && ticketTypes.length > 0) {
+          const freeTicket = ticketTypes[0] as any;
+          freeEventCapacity = freeTicket.total_quantity || freeTicket.TotalQuantity || 100;
+        }
+
         const eventFormData: EventFormData = {
           title: event.title,
           description: event.description,
@@ -177,7 +184,8 @@ export default function EditEventPage() {
             quantity: ticket.total_quantity || ticket.totalQuantity || ticket.TotalQuantity || ticket.quantity || ticket.Quantity || 100,
             totalQuantity: ticket.total_quantity || ticket.totalQuantity || ticket.TotalQuantity || ticket.quantity || ticket.Quantity || 100,
             soldQuantity: ticket.sold_quantity || ticket.soldQuantity || ticket.SoldQuantity || 0
-          }))
+          })),
+          freeEventCapacity
         };
         
         console.log("Final form data:", eventFormData);

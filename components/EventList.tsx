@@ -7,6 +7,36 @@ import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { SearchModal } from "./modals/SearchModal";
 
+// Utility function to calculate minimum price from ticket types
+const getMinPrice = (event: any): string => {
+  const ticketTypes = event.ticket_types || event.TicketTypes || [];
+  
+  if (!ticketTypes || ticketTypes.length === 0) {
+    return "TBD";
+  }
+  
+  // Check if event is free (has ticket type with price 0)
+  const hasFreeTickets = ticketTypes.some((tt: any) => 
+    (tt.price || tt.Price || 0) === 0
+  );
+  
+  if (hasFreeTickets && ticketTypes.length === 1) {
+    return "FREE";
+  }
+  
+  // Find minimum non-zero price
+  const prices = ticketTypes
+    .map((tt: any) => tt.price || tt.Price || 0)
+    .filter((p: number) => p > 0);
+  
+  if (prices.length === 0) {
+    return "FREE";
+  }
+  
+  const minPrice = Math.min(...prices);
+  return `From ₦${minPrice.toLocaleString()}`;
+};
+
 interface EventListProps {
   searchQuery?: string;
   tags?: string;
@@ -114,6 +144,9 @@ export function EventList({ searchQuery, tags, location, dateFrom, dateTo, event
             const tags =
               (event.tags && Array.isArray(event.tags)) ? event.tags : 
               (event.Tags && Array.isArray(event.Tags)) ? event.Tags : [];
+            
+            // Calculate minimum price from ticket types
+            const minPrice = getMinPrice(event);
 
             return (
               <EventCard
@@ -130,7 +163,7 @@ export function EventList({ searchQuery, tags, location, dateFrom, dateTo, event
                 day={day}
                 tags={tags}
                 showTags={true}
-                price="From ₦500"
+                price={minPrice}
                 interested={0}
               />
             );

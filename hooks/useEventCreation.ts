@@ -34,6 +34,7 @@ export interface EventFormData {
     totalQuantity?: number;
     soldQuantity?: number;
   }>;
+  freeEventCapacity?: number;
 }
 
 export const useEventCreation = (eventId?: string) => {
@@ -137,7 +138,15 @@ export const useEventCreation = (eventId?: string) => {
               description: ticket.description,
               total_quantity: ticket.quantity || 100,
             }))
-        : [];
+        : // For free events, include a single ticket type with the specified capacity
+          formData.freeEventCapacity 
+          ? [{
+              name: "Free Entry",
+              price: 0,
+              description: "Free admission to this event",
+              total_quantity: formData.freeEventCapacity,
+            }]
+          : [];
 
       const draftData: DraftEventData = {
         id: draftId || undefined,
@@ -203,7 +212,15 @@ export const useEventCreation = (eventId?: string) => {
               description: ticket.description,
               total_quantity: ticket.quantity || 100,
             }))
-        : [];
+        : // For free events, include a single ticket type with the specified capacity
+          formData.freeEventCapacity 
+          ? [{
+              name: "Free Entry",
+              price: 0,
+              description: "Free admission to this event",
+              total_quantity: formData.freeEventCapacity,
+            }]
+          : [];
 
       const eventData: CreateEventData = {
         title: formData.title,

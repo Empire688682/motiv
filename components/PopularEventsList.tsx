@@ -8,6 +8,36 @@ import { useEffect, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { SearchModal } from "./modals/SearchModal";
 
+// Utility function to calculate minimum price from ticket types
+const getMinPrice = (event: any): string => {
+  const ticketTypes = event.ticket_types || event.TicketTypes || [];
+  
+  if (!ticketTypes || ticketTypes.length === 0) {
+    return "TBD";
+  }
+  
+  // Check if event is free (has ticket type with price 0)
+  const hasFreeTickets = ticketTypes.some((tt: any) => 
+    (tt.price || tt.Price || 0) === 0
+  );
+  
+  if (hasFreeTickets && ticketTypes.length === 1) {
+    return "FREE";
+  }
+  
+  // Find minimum non-zero price
+  const prices = ticketTypes
+    .map((tt: any) => tt.price || tt.Price || 0)
+    .filter((p: number) => p > 0);
+  
+  if (prices.length === 0) {
+    return "FREE";
+  }
+  
+  const minPrice = Math.min(...prices);
+  return `From ₦${minPrice.toLocaleString()}`;
+};
+
 export function PopularEventsList() {
   const [mounted, setMounted] = useState(false);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
@@ -60,10 +90,10 @@ export function PopularEventsList() {
   if (events) {
     events.forEach((event, index) => {
       console.log(`Event ${index + 1}:`, {
-        id: event.id || event.ID,
-        title: event.title || event.Title,
-        location: event.location || event.Location,
-        startDate: event.start_date || event.StartDate
+        id: event.id,
+        title: event.title,
+        location: event.location,
+        startDate: event.start_date
       });
     });
   }
@@ -88,42 +118,44 @@ export function PopularEventsList() {
       {/* Events Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {events.map((event, index) => {
-          console.log(`Rendering event ${index + 1}:`, event.id || event.ID, event.title || event.Title);
+          console.log(`Rendering event ${index + 1}:`, event.id, event.title);
           try {
-            const startDate = new Date(event.start_date || event.StartDate);
+            const startDate = new Date(event.start_date);
             const month = startDate
               .toLocaleDateString("en-US", { month: "short" })
               .toUpperCase();
             const day = startDate.getDate().toString().padStart(2, "0");
-            const tags =
-              (event.tags && Array.isArray(event.tags)) ? event.tags : 
-              (event.Tags && Array.isArray(event.Tags)) ? event.Tags : [];
+            const tags = (event.tags && Array.isArray(event.tags)) ? event.tags : [];
+            
+            // Calculate minimum price from ticket types
+            const minPrice = getMinPrice(event);
 
             return (
               <EventCard
-                key={`popular-event-${event.id || event.ID}-${index}`}
-                id={event.id || event.ID}
+                key={`popular-event-${event.id}-${index}`}
+                id={event.id}
                 image={
-                  event.banner_image_url || event.BannerImageURL ||
+                  event.banner_image_url ||
                   "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=400&h=200&fit=crop&auto=format"
                 }
-                title={event.title || event.Title}
-                location={event.location || event.Location}
-                time={`${event.start_time || event.StartTime} - ${event.end_time || event.EndTime}`}
+                title={event.title}
+                location={event.location}
+                time={`${event.start_time} - ${event.end_time}`}
                 month={month}
                 day={day}
                 tags={tags}
                 showTags={true}
-                price="From ₦500"
+                price={minPrice}
               />
             );
           } catch (error) {
-            console.error(`Error rendering event ${index + 1}:`, event.id || event.ID, error);
+            console.error(`Error rendering event ${index + 1}:`, event.id, error);
             console.error("Event data that failed:", event);
+            const errorMessage = error instanceof Error ? error.message : 'Unknown error';
             return (
-              <div key={`error-event-${event.id || event.ID}-${index}`} className="p-4 border border-red-500 rounded">
-                <p className="text-red-500">Error rendering event: {event.title || event.Title}</p>
-                <p className="text-xs text-gray-500">{error.message}</p>
+              <div key={`error-event-${event.id}-${index}`} className="p-4 border border-red-500 rounded">
+                <p className="text-red-500">Error rendering event: {event.title}</p>
+                <p className="text-xs text-gray-500">{errorMessage}</p>
               </div>
             );
           }
