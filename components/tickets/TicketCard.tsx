@@ -187,6 +187,9 @@ export function TicketCard({ ticket }: TicketCardProps) {
                     <div className="text-xs text-gray-700 bg-gray-50 p-2 rounded font-mono break-all">
                       {ticket.qrData}
                     </div>
+                    <p className="text-xs text-gray-500 mt-2">
+                      💡 <strong>Note:</strong> Copy the entire code including the "MOTIV-" prefix. This code can be used for manual entry at the event if QR scanning is unavailable.
+                    </p>
                   </div>
                 )}
                 {ticket.event.manual_description && (
