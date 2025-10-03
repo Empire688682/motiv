@@ -863,7 +863,7 @@ export default function EventPage() {
                 )}
               </div>
               <Button
-                className="bg-[#D72638] hover:bg-[#B91E2F] text-white px-4 py-2 rounded-lg"
+                className="bg-[#D72638]  text-white px-4 py-2 rounded-lg"
                 onClick={handleReviewClick}
               >
                 Add Review

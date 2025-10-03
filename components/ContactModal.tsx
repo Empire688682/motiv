@@ -73,7 +73,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
           <div className="pt-4">
             <Button
               onClick={onClose}
-              className="w-full bg-[#D72638] hover:bg-[#B91E2F] text-white"
+              className="w-full bg-[#D72638]  text-white"
             >
               Close
             </Button>

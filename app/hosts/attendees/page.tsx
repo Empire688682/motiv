@@ -127,7 +127,7 @@ export default function HostAttendeesPage() {
         </div>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
           <Link href="/hosts/scan-qr">
-            <Button className="bg-[#D72638] hover:bg-[#B91E2F] text-white w-full sm:w-auto touch-manipulation">
+            <Button className="bg-[#D72638]  text-white w-full sm:w-auto touch-manipulation">
               <QrCode className="w-4 h-4 mr-2" />
               Scan QR Code
             </Button>
@@ -135,7 +135,7 @@ export default function HostAttendeesPage() {
           <Button 
             onClick={handleExport}
             disabled={isExporting}
-            className="bg-black hover:bg-gray-800 text-white w-full sm:w-auto touch-manipulation"
+            className="bg-black text-white w-full sm:w-auto touch-manipulation"
           >
             {isExporting ? (
               <>
@@ -167,7 +167,7 @@ export default function HostAttendeesPage() {
         
         <div className="flex gap-3 sm:gap-4">
           <Select value={selectedEvent} onValueChange={setSelectedEvent}>
-            <SelectTrigger className="flex-1 sm:w-40">
+            <SelectTrigger className="flex-1 flex sm:w-40">
               <SelectValue placeholder="All Events" />
             </SelectTrigger>
             <SelectContent>
@@ -179,7 +179,7 @@ export default function HostAttendeesPage() {
           </Select>
 
           <Select value={selectedTicketType} onValueChange={setSelectedTicketType}>
-            <SelectTrigger className="flex-1 sm:w-40">
+            <SelectTrigger className="flex-1 flex sm:w-40">
               <SelectValue placeholder="All Ticket Types" />
             </SelectTrigger>
             <SelectContent>
@@ -339,7 +339,7 @@ export default function HostAttendeesPage() {
             <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDeleteConfirm}
-              className="bg-red-600 hover:bg-red-700 focus:ring-red-600"
+              className="bg-red-600 focus:ring-red-600"
             >
               Remove
             </AlertDialogAction>

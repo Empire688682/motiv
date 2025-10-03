@@ -120,7 +120,7 @@ export function ShareModal({ isOpen, onClose }: ShareModalProps) {
           {typeof window !== 'undefined' && navigator.share && (
             <Button
               onClick={handleNativeShare}
-              className="w-full bg-[#D72638] hover:bg-[#B91E2F] text-white"
+              className="w-full bg-[#D72638]  text-white"
             >
               <Share2 className="w-4 h-4 mr-2" />
               Share via Device

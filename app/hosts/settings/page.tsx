@@ -241,7 +241,7 @@ export default function HostSettingsPage() {
                   <Button
                     type="submit"
                     disabled={isUpdatingProfile}
-                    className="w-full sm:w-auto bg-[#D72638] hover:bg-[#B91E2F] text-white px-6 py-3 sm:py-2 rounded-lg font-medium transition-colors duration-200 touch-manipulation disabled:opacity-50"
+                    className="w-full sm:w-auto bg-[#D72638]  text-white px-6 py-3 sm:py-2 rounded-lg font-medium transition-colors duration-200 touch-manipulation disabled:opacity-50"
                   >
                     {isUpdatingProfile ? (
                       <>

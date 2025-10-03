@@ -64,7 +64,7 @@ export default function HostPasswordPage() {
             <h2 className="text-xl font-semibold text-gray-900 mb-2">Set Password</h2>
             <p className="text-gray-600 mb-6">A password has not been set for your account.</p>
             
-            <button className="bg-[#D72638] hover:bg-[#B91E2F] text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200">
+            <button className="bg-[#D72638]  text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200">
               Set Password
             </button>
           </div>

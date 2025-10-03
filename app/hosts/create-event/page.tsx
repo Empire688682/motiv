@@ -200,17 +200,6 @@ export default function CreateEventPage() {
     switch (currentStep) {
       case 1:
         return (
-          <EditStep
-            formData={formData}
-            onUpdate={handleFormDataChange}
-            onNext={handleNext}
-            onSaveDraft={handleSaveDraft}
-            isSaving={isSaving}
-            isEdit={isEdit}
-          />
-        );
-      case 2:
-        return (
           <BannerStep
             formData={formData}
             onUpdate={handleFormDataChange}
@@ -224,7 +213,7 @@ export default function CreateEventPage() {
             onResetUpload={resetUploadState}
           />
         );
-      case 3:
+      case 2:
         return (
           <TicketingStep
             formData={formData}
@@ -236,7 +225,7 @@ export default function CreateEventPage() {
             isEdit={isEdit}
           />
         );
-      case 4:
+      case 3:
         return (
           <ReviewStep
             formData={formData}

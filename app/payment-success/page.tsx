@@ -94,7 +94,7 @@ export default function PaymentSuccessPage() {
           {/* Action Buttons */}
           <div className="space-y-4 pt-6">
             <Button
-              className="w-full bg-[#D72638] hover:bg-[#B91E2F] text-white py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-[#D72638]/25 hover:shadow-xl transition-all duration-300"
+              className="w-full bg-[#D72638]  text-white py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-[#D72638]/25 hover:shadow-xl transition-all duration-300"
             >
               Get Ticket
             </Button>

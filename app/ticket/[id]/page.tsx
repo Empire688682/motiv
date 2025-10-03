@@ -245,7 +245,7 @@ export default function TicketPage() {
               </p>
               <Button
                 onClick={() => router.push("/my-events")}
-                className="bg-[#D72638] hover:bg-[#B91E2F]"
+                className="bg-[#D72638] "
               >
                 Back to My Events
               </Button>

@@ -83,7 +83,7 @@ export function PaymentSuccessModal({
           
           <div className="space-y-3">
             <Button
-              className="w-full bg-[#D72638] hover:bg-[#B91E2F] text-white py-3 font-semibold"
+              className="w-full bg-[#D72638]  text-white py-3 font-semibold"
               onClick={onGetTicket}
             >
               Get Ticket

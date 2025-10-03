@@ -116,7 +116,7 @@ export function PopularEventsList() {
         onClose={() => setIsSearchModalOpen(false)}
       />
       {/* Events Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 bg-red/700">
         {events.map((event, index) => {
           console.log(`Rendering event ${index + 1}:`, event.id, event.title);
           try {

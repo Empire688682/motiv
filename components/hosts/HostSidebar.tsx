@@ -132,7 +132,7 @@ export function HostSidebar({ isOpen, onClose }: HostSidebarProps) {
               </p>
               <Button
                 onClick={() => setShowAuthModal(true)}
-                className="w-full bg-[#D72638] hover:bg-[#B91E2F] text-white text-sm py-2"
+                className="w-full bg-[#D72638]  text-white text-sm py-2"
               >
                 Sign In
               </Button>
@@ -242,7 +242,7 @@ export function HostSidebar({ isOpen, onClose }: HostSidebarProps) {
               </p>
               <Button
                 onClick={() => setShowAuthModal(true)}
-                className="w-full bg-[#D72638] hover:bg-[#B91E2F] text-white text-sm py-2"
+                className="w-full bg-[#D72638]  text-white text-sm py-2"
               >
                 Sign In
               </Button>

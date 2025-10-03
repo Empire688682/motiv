@@ -437,7 +437,7 @@ export function ReviewStep({ formData, onBack, onSave, isLoading = false, isEdit
             <Button
               onClick={handlePublish}
               disabled={isLoading}
-              className="bg-[#D72638] hover:bg-[#B91E2F] text-white px-8"
+              className="bg-[#D72638]  text-white px-8"
             >
               {isLoading ? (
                 <>

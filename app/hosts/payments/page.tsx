@@ -211,7 +211,7 @@ export default function HostPaymentsPage() {
         </div>
         <Button 
           onClick={handleExportPayments}
-          className="bg-[#D72638] hover:bg-[#B91E2F] text-white w-full sm:w-auto"
+          className="bg-[#D72638]  text-white w-full sm:w-auto"
         >
           <Download className="w-4 h-4 mr-2" />
           Download Statement

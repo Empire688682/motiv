@@ -156,7 +156,7 @@ export default function HostEventsPage() {
             </Button>
           )}
           <Button 
-            className="bg-black hover:bg-gray-800 text-white w-full sm:w-auto touch-manipulation"
+            className=" bg-black text-white w-full sm:w-auto touch-manipulation"
             onClick={() => router.push('/hosts/create-event')}
           >
             <Plus className="w-4 h-4 mr-2" />
@@ -180,7 +180,7 @@ export default function HostEventsPage() {
         
         <div className="flex gap-3 sm:gap-4">
           <Select value={statusFilter} onValueChange={setStatusFilter}>
-            <SelectTrigger className="flex-1 sm:w-32">
+            <SelectTrigger className="flex-1 sm:w-32 flex">
               <SelectValue placeholder="All Status" />
             </SelectTrigger>
             <SelectContent>
@@ -317,7 +317,7 @@ export default function HostEventsPage() {
             <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDeleteConfirm}
-              className="bg-red-600 hover:bg-red-700 focus:ring-red-600"
+              className="bg-red-600 focus:ring-red-600 ml-2"
             >
               Delete
             </AlertDialogAction>
