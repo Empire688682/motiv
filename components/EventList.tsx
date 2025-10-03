@@ -133,7 +133,7 @@ export function EventList({ searchQuery, tags, location, dateFrom, dateTo, event
         onClose={() => setIsSearchModalOpen(false)}
       />
       {/* Events Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 w-full">
         {events.map((event) => {
           try {
             const startDate = new Date(event.start_date || event.StartDate);

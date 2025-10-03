@@ -103,16 +103,16 @@ export function EventCard({
   };
 
   return (
-    <Link href={`/event/${eventId}`} className="block justify-center">
-      <Card className="bg-gradient-to-br from-[#1a1a1a] to-[#151515] border-[#333] mx-auto overflow-hidden hover:border-gray-500 transition-all duration-300 hover:shadow-lg group cursor-pointer hover:-translate-y-1 w-full">
+    <Link href={`/event/${eventId}`} className="block w-full">
+      <Card className="bg-gradient-to-br from-[#1a1a1a] to-[#151515] border-[#333] overflow-hidden hover:border-gray-500 transition-all duration-300 hover:shadow-lg group cursor-pointer hover:-translate-y-1 w-full max-w-full">
         <CardContent className="p-0 w-full">
-          <div className="relative overflow-hidden">
+          <div className="relative overflow-hidden aspect-video sm:aspect-auto">
             <Image
               src={image}
               alt={`${title} event`}
               width={400}
               height={200}
-              className={`w-full h-32 sm:h-40 md:h-48 object-cover group-hover:scale-105 transition-transform duration-300 ${
+              className={`w-full h-40 sm:h-44 md:h-48 object-cover group-hover:scale-105 transition-transform duration-300 ${
                 isSoldOut ? "grayscale opacity-75" : ""
               }`}
             />
@@ -172,9 +172,9 @@ export function EventCard({
             )}
           </div>
 
-          <div className="p-3 sm:p-4 relative">
-            <div className="flex items-center gap-2 sm:gap-3 md:gap-4 mb-2 sm:mb-3">
-              <div className="text-center min-w-[35px] sm:min-w-[45px] md:min-w-[50px]">
+          <div className="p-3 sm:p-4 relative w-full">
+            <div className="flex items-start gap-2 sm:gap-3 md:gap-4 mb-2 sm:mb-3 w-full">
+              <div className="text-center flex-shrink-0 min-w-[40px] sm:min-w-[45px] md:min-w-[50px]">
                 <div className="text-[#D72638] font-bold text-xs sm:text-sm">
                   {month}
                 </div>
@@ -182,8 +182,8 @@ export function EventCard({
                   {day}
                 </div>
               </div>
-              <div className="flex-1 min-w-0 overflow-hidden">
-                <h3 className="font-bold text-sm sm:text-base md:text-lg text-white mb-1 group-hover:text-gray-200 transition-colors duration-300 truncate">
+              <div className="flex-1 min-w-0 w-full">
+                <h3 className="font-bold text-sm sm:text-base md:text-lg text-white mb-1 group-hover:text-gray-200 transition-colors duration-300 truncate w-full">
                   {title}
                 </h3>
                 <p className="text-gray-400 text-xs sm:text-sm mb-1 flex items-center gap-1 w-full">
