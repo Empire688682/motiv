@@ -613,7 +613,7 @@ export default function EventPage() {
                 <div className="space-y-4 mb-6">
                   {/* Check if event is free */}
                   {event.event_type === "free" ? (
-                    <div className="border border-green-600 rounded-lg p-6 bg-green-50">
+                    <div className="border border-green-600 rounded-lg p-6 bg-green-50 opacity-100 shadow-md">
                       <div className="text-center">
                         <div className="flex items-center justify-center gap-2 mb-3">
                           <span className="text-2xl font-bold text-green-600">
@@ -630,7 +630,7 @@ export default function EventPage() {
                           This is a free event - no payment required!
                         </p>
                         <Button
-                          className="bg-green-600 hover:bg-green-700 text-white px-8"
+                          className="bg-green-600 hover:bg-green-700 text-white px-8 z-10 shadow-lg"
                           onClick={handleRSVPClick}
                         >
                           RSVP for Free

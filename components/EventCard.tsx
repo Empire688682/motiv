@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
-import { Heart } from "lucide-react";
+import { Heart, MapPin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
@@ -186,8 +186,9 @@ export function EventCard({
                 <h3 className="font-bold text-sm sm:text-base md:text-lg text-white mb-1 group-hover:text-gray-200 transition-colors duration-300 truncate">
                   {title}
                 </h3>
-                <p className="text-gray-400 text-xs sm:text-sm mb-1 flex items-center gap-1 w-full flex-wrap">
-                  <span className="py-2">{location}</span>
+                <p className="text-gray-400 text-xs sm:text-sm mb-1 flex items-center gap-1 w-full">
+                  <MapPin className="h-4 w-4 text-gray-500 flex-shrink-0" />
+                  <span className="truncate">{location}</span>
                 </p>
                 <p className="text-gray-400 text-xs sm:text-sm mb-2 truncate">
                   {time}
