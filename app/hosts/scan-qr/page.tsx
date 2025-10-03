@@ -78,6 +78,8 @@ export default function ScanQRPage() {
   const [errorModalMessage, setErrorModalMessage] = useState("");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [successData, setSuccessData] = useState<ScanResult | null>(null);
+  const [lastScanTime, setLastScanTime] = useState<number>(0);
+  const [isProcessingScan, setIsProcessingScan] = useState(false);
 
   // Load host events on component mount
   useEffect(() => {
@@ -124,6 +126,16 @@ export default function ScanQRPage() {
       return;
     }
 
+    // Prevent duplicate scans within 2 seconds
+    const now = Date.now();
+    if (now - lastScanTime < 2000 || isProcessingScan) {
+      console.log("🚫 Preventing duplicate scan - cooldown active");
+      return;
+    }
+
+    setLastScanTime(now);
+    setIsProcessingScan(true);
+
     try {
       const response = await apiClient.post<ScanResult>("/hosts/me/attendees/checkin", {
         qrCode,
@@ -142,15 +154,18 @@ export default function ScanQRPage() {
 
       if (result.success) {
         console.log("✅ Check-in successful for:", result.attendee?.name);
+        // Temporarily stop scanning to prevent double scan
+        setIsScanning(false);
         // Show success with modal and toast
         toast.success("✅ Attendee checked in successfully!");
         setSuccessData(result);
         setShowSuccessModal(true);
         // Reload stats
         loadEventStats();
-        // Auto-close success modal after 3 seconds
+        // Auto-close success modal and restart scanning after 3 seconds
         setTimeout(() => {
           setShowSuccessModal(false);
+          setIsScanning(true); // Restart scanning
         }, 3000);
       } else {
         console.log("❌ Check-in failed:", result.message);
@@ -171,6 +186,11 @@ export default function ScanQRPage() {
       toast.error(result.message);
       setErrorModalMessage(result.message);
       setShowErrorModal(true);
+    } finally {
+      // Allow next scan after processing is complete
+      setTimeout(() => {
+        setIsProcessingScan(false);
+      }, 1000);
     }
   };
 
