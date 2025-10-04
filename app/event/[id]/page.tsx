@@ -1000,6 +1000,7 @@ export default function EventPage() {
         }}
         selectedTickets={getSelectedTicketDetails()}
         userEmail={user?.email || user?.Email || ""}
+        userName={user?.name || user?.Name || ""}
       />
 
       <AddReviewModal

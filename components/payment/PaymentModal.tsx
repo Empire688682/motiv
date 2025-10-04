@@ -60,6 +60,7 @@ interface PaymentModalProps {
     price: number;
   }>;
   userEmail: string;
+  userName: string;
 }
 
 export function PaymentModal({
@@ -68,6 +69,7 @@ export function PaymentModal({
   event,
   selectedTickets,
   userEmail,
+  userName
 }: PaymentModalProps) {
   const [step, setStep] = useState<"details" | "payment">("details");
   const [attendees, setAttendees] = useState<AttendeeInfo[]>([]);
@@ -89,6 +91,7 @@ export function PaymentModal({
     resolver: zodResolver(attendeeSchema),
     defaultValues: {
       email: userEmail,
+      fullName: userName
     },
   });
 
