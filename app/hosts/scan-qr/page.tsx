@@ -76,6 +76,10 @@ export default function ScanQRPage() {
   const [loading, setLoading] = useState(true);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [errorModalMessage, setErrorModalMessage] = useState("");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [successData, setSuccessData] = useState<ScanResult | null>(null);
+  const [lastScanTime, setLastScanTime] = useState<number>(0);
+  const [isProcessingScan, setIsProcessingScan] = useState(false);
 
   // Load host events on component mount
   useEffect(() => {
@@ -122,11 +126,23 @@ export default function ScanQRPage() {
       return;
     }
 
+    // Prevent duplicate scans within 2 seconds
+    const now = Date.now();
+    if (now - lastScanTime < 2000 || isProcessingScan) {
+      console.log("🚫 Preventing duplicate scan - cooldown active");
+      return;
+    }
+
+    setLastScanTime(now);
+    setIsProcessingScan(true);
+
     try {
       const response = await apiClient.post<ScanResult>("/hosts/me/attendees/checkin", {
         qrCode,
         eventId: selectedEvent,
       });
+
+      console.log("✅ Check-in API Response:", response);
 
       const result = {
         ...response,
@@ -137,15 +153,29 @@ export default function ScanQRPage() {
       setScanHistory(prev => [result, ...prev.slice(0, 9)]);
 
       if (result.success) {
-        toast.success("Attendee checked in successfully!");
+        console.log("✅ Check-in successful for:", result.attendee?.name);
+        // Temporarily stop scanning to prevent double scan
+        setIsScanning(false);
+        // Show success with modal and toast
+        toast.success("✅ Attendee checked in successfully!");
+        setSuccessData(result);
+        setShowSuccessModal(true);
         // Reload stats
         loadEventStats();
+        // Auto-close success modal and restart scanning after 3 seconds
+        setTimeout(() => {
+          setShowSuccessModal(false);
+          setIsScanning(true); // Restart scanning
+        }, 3000);
       } else {
+        console.log("❌ Check-in failed:", result.message);
+        // Show error
         toast.error(result.message);
         setErrorModalMessage(result.message);
         setShowErrorModal(true);
       }
     } catch (error: any) {
+      console.error("❌ Check-in API Error:", error);
       const result = {
         success: false,
         message: error.message || "Failed to check in attendee",
@@ -156,6 +186,11 @@ export default function ScanQRPage() {
       toast.error(result.message);
       setErrorModalMessage(result.message);
       setShowErrorModal(true);
+    } finally {
+      // Allow next scan after processing is complete
+      setTimeout(() => {
+        setIsProcessingScan(false);
+      }, 1000);
     }
   };
 
@@ -419,6 +454,52 @@ export default function ScanQRPage() {
         </>
       )}
   </div>
+  
+  {/* Success modal - shows successful check-ins prominently */}
+  <Dialog open={showSuccessModal} onOpenChange={(open) => setShowSuccessModal(open)}>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle className="flex items-center gap-2 text-green-600">
+            <CheckCircle className="w-6 h-6" />
+            Check-in Successful!
+          </DialogTitle>
+        </DialogHeader>
+        {successData?.attendee && (
+          <div className="space-y-4 py-4">
+            <div className="flex items-center gap-3 p-4 bg-green-50 rounded-lg">
+              <User className="w-10 h-10 text-green-600 flex-shrink-0" />
+              <div className="flex-1 min-w-0">
+                <p className="font-semibold text-lg text-green-900">{successData.attendee.name}</p>
+                <p className="text-sm text-green-700">{successData.attendee.email}</p>
+              </div>
+            </div>
+            <div className="space-y-2 text-sm">
+              <div className="flex justify-between">
+                <span className="text-gray-600">Event:</span>
+                <span className="font-medium text-gray-900">{successData.attendee.event}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600">Ticket Type:</span>
+                <span className="font-medium text-gray-900">{successData.attendee.ticketType}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600">Status:</span>
+                <span className="font-medium text-green-600">Checked In</span>
+              </div>
+            </div>
+          </div>
+        )}
+        <DialogFooter>
+          <Button 
+            onClick={() => setShowSuccessModal(false)} 
+            className="w-full bg-green-600 hover:bg-green-700 text-white"
+          >
+            Continue Scanning
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+
   {/* Error modal - shows scan/camera errors so user doesn't miss them */}
   <Dialog open={showErrorModal} onOpenChange={(open) => setShowErrorModal(open)}>
       <DialogContent>

@@ -27,7 +27,7 @@ import { useWishlist, useWishlistMutations } from "@/lib/hooks";
 
 export default function WishlistPage() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortBy, setSortBy] = useState("date");
+  const [sortBy, setSortBy] = useState("date-desc");
 
   // Get wishlist from API
   const { data: wishlistEvents, isLoading, error } = useWishlist();
@@ -91,6 +91,8 @@ export default function WishlistPage() {
       switch (sortBy) {
         case "date":
           return new Date(a.date).getTime() - new Date(b.date).getTime();
+        case "date-desc":
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
         case "added":
           return (
             new Date(b.addedDate).getTime() - new Date(a.addedDate).getTime()
@@ -179,6 +181,12 @@ export default function WishlistPage() {
                 <SelectValue placeholder="Sort by" />
               </SelectTrigger>
               <SelectContent className="bg-[#1a1a1a] border-gray-700">
+                <SelectItem
+                  value="date-desc"
+                  className="text-white hover:bg-gray-800"
+                >
+                  Latest Events
+                </SelectItem>
                 <SelectItem
                   value="date"
                   className="text-white hover:bg-gray-800"

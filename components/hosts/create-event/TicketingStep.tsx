@@ -123,6 +123,34 @@ export function TicketingStep({
           </div>
         </div>
 
+        {/* Free Event Capacity - Only show if free event */}
+        {formData.eventType === "free" && (
+          <div>
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+              Event Capacity
+            </h2>
+            <div className="border border-gray-200 rounded-lg p-6">
+              <div className="max-w-md">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Maximum Capacity
+                </label>
+                <Input
+                  type="number"
+                  required
+                  min="1"
+                  value={formData.freeEventCapacity || 100}
+                  onChange={(e) => onUpdate({ freeEventCapacity: parseInt(e.target.value) || 100 })}
+                  placeholder="100"
+                  className="w-full"
+                />
+                <p className="mt-2 text-sm text-gray-500">
+                  Maximum number of people who can RSVP to your free event
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Ticket Configuration - Only show if ticketed */}
         {formData.eventType === "ticketed" && (
           <div>

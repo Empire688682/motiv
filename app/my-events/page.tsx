@@ -226,14 +226,14 @@ export default function MyEventsPage() {
   const now = new Date();
   const safeTickets = tickets || []; // Ensure tickets is always an array
 
-  // Sort tickets by start date (most recent first for past, nearest first for upcoming)
+  // Sort tickets by start date (most recent first for past, latest upcoming first)
   const upcomingTickets = safeTickets
     .filter((ticket) => new Date(ticket.event.start_date) >= now)
     .sort(
       (a, b) =>
-        new Date(a.event.start_date).getTime() -
-        new Date(b.event.start_date).getTime()
-    ); // Nearest upcoming first
+        new Date(b.event.start_date).getTime() -
+        new Date(a.event.start_date).getTime()
+    ); // Latest upcoming first
 
   const pastTickets = safeTickets
     .filter((ticket) => new Date(ticket.event.start_date) < now)

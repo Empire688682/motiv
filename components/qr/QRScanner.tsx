@@ -29,6 +29,9 @@ export function QRScanner({ onScan, onError, isActive, className = "" }: QRScann
   const [isLoading, setIsLoading] = useState(false);
   const [hasCamera, setHasCamera] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const lastScanRef = useRef<string>("");
+  const lastScanTimeRef = useRef<number>(0);
+  const isProcessingRef = useRef<boolean>(false);
 
   useEffect(() => {
     // Check if camera is available
@@ -59,7 +62,43 @@ export function QRScanner({ onScan, onError, isActive, className = "" }: QRScann
       const qrScanner = new QrScanner(
         videoRef.current,
         (result) => {
+          const now = Date.now();
+          const timeSinceLastScan = now - lastScanTimeRef.current;
+          
+          // Prevent duplicate scans: same code within 3 seconds OR still processing
+          if (isProcessingRef.current) {
+            console.log('⏸️ QR Scan: Already processing, ignoring...');
+            return;
+          }
+          
+          if (result.data === lastScanRef.current && timeSinceLastScan < 3000) {
+            console.log('⏸️ QR Scan: Duplicate scan ignored (within 3s)');
+            return;
+          }
+          
+          // Mark as processing to prevent concurrent scans
+          isProcessingRef.current = true;
+          lastScanRef.current = result.data;
+          lastScanTimeRef.current = now;
+          
+          console.log('📸 QR Scan: Processing new scan:', result.data);
+          
+          // Pause scanner temporarily
+          if (qrScannerRef.current) {
+            qrScannerRef.current.pause();
+          }
+          
+          // Call the onScan callback
           onScan(result.data);
+          
+          // Resume scanner after 2 seconds
+          setTimeout(() => {
+            if (qrScannerRef.current && isActive) {
+              qrScannerRef.current.start();
+            }
+            isProcessingRef.current = false;
+            console.log('▶️ QR Scanner: Resumed and ready for next scan');
+          }, 2000);
         },
         {
           highlightScanRegion: true,
@@ -85,6 +124,9 @@ export function QRScanner({ onScan, onError, isActive, className = "" }: QRScann
       qrScannerRef.current.destroy();
       qrScannerRef.current = null;
     }
+    isProcessingRef.current = false;
+    lastScanRef.current = "";
+    lastScanTimeRef.current = 0;
     setIsLoading(false);
   };
 

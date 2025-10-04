@@ -51,7 +51,8 @@ const initialFormData: EventFormData = {
       price: 0,
       description: ""
     }
-  ]
+  ],
+  freeEventCapacity: 100
 };
 
 export default function CreateEventPage() {

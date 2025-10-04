@@ -266,8 +266,9 @@ export default function HostEventsPage() {
                     <td className="py-3 sm:py-4 px-3 sm:px-6">
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" size="sm" className="p-1 h-8 w-8 touch-manipulation hover:bg-gray-100">
+                          <Button variant="ghost" size="sm" className="p-1 h-8 w-auto touch-manipulation hover:bg-gray-100 flex items-center gap-1">
                             <MoreHorizontal className="w-4 h-4 text-gray-600 hover:text-gray-900" />
+                            <span className="text-xs text-gray-600 hover:text-gray-900">Options</span>
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
