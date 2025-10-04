@@ -551,25 +551,6 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
                   </div>
                 )}
 
-                {!isLogin && (
-                  <div className="flex items-center space-x-2">
-                    <input
-                      id="exclusive"
-                      name="exclusive"
-                      type="checkbox"
-                      checked={formData.exclusive}
-                      onChange={handleInputChange}
-                      className="w-4 h-4 text-[#D72638] bg-gray-800 border-gray-600 rounded focus:ring-[#D72638] focus:ring-2"
-                    />
-                    <Label
-                      htmlFor="exclusive"
-                      className="text-sm text-gray-300 cursor-pointer"
-                    >
-                      Subscribe to exclusive events and VIP access
-                    </Label>
-                  </div>
-                )}
-
                 {isLogin && (
                   <div className="flex items-center space-x-2">
                     <input

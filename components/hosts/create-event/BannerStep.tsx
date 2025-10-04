@@ -225,24 +225,6 @@ export function BannerStep({
           </Button>
           
           <div className="flex gap-3">
-            {onSaveDraft && (
-              <Button
-                type="button"
-                variant="outline"
-                onClick={onSaveDraft}
-                disabled={isSaving || isUploading}
-                className="px-6"
-              >
-                {isSaving ? (
-                  <>
-                    <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                    Saving...
-                  </>
-                ) : (
-                  "Save Draft"
-                )}
-              </Button>
-            )}
             
             <Button
               type="submit"

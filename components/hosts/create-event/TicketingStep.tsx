@@ -259,26 +259,7 @@ export function TicketingStep({
             Go back
           </Button>
           
-          <div className="flex gap-3">
-            {onSaveDraft && (
-              <Button
-                type="button"
-                variant="outline"
-                onClick={onSaveDraft}
-                disabled={isSaving}
-                className="px-6"
-              >
-                {isSaving ? (
-                  <>
-                    <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                    Saving...
-                  </>
-                ) : (
-                  "Save Draft"
-                )}
-              </Button>
-            )}
-            
+          <div className="flex gap-3"> 
             <Button
               type="submit"
               className="bg-[#D72638]  text-white px-8"
